@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nico Schot · Tech Vision PH — Full Business Plan · Tech Vision PH</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#08091A;--bg2:#0d0f26;
+  --cyan:#00C6FF;--blue:#0072FF;--purple:#7c3aed;--gold:#F5A623;--gold2:#D97706;
+  --green:#22c55e;--white:#f0f4ff;--muted:rgba(240,244,255,.52);
+  --border:rgba(255,255,255,.09);--border-c:rgba(0,198,255,.22);
+  --item-bg:rgba(255,255,255,.04);
+  --accent:#028090;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;overflow-x:hidden;}
+
+/* BG */
+.bg-canvas{position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%,rgba(0,114,255,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 85%,rgba(124,58,237,.16) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 55% 35%,rgba(0,198,255,.08) 0%,transparent 50%),
+    linear-gradient(145deg,#07081C 0%,#0d0f2a 50%,#070819 100%);
+  animation:bgP 10s ease-in-out infinite alternate;
+}
+@keyframes bgP{0%{filter:brightness(1)}100%{filter:brightness(1.1)}}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.18;z-index:0;animation:oF linear infinite;}
+.o1{width:500px;height:500px;background:#0072ff;top:-150px;left:-150px;animation-duration:20s;}
+.o2{width:360px;height:360px;background:#7c3aed;bottom:-100px;right:-100px;animation-duration:25s;animation-direction:reverse;}
+.o3{width:260px;height:260px;background:#F5A623;top:45%;left:55%;animation-duration:17s;}
+@keyframes oF{0%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-18px) scale(1.04)}66%{transform:translate(-18px,25px) scale(.96)}100%{transform:translate(0,0) scale(1)}}
+.grid-lines{position:fixed;inset:0;z-index:0;opacity:.04;
+  background-image:linear-gradient(rgba(0,198,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,198,255,1) 1px,transparent 1px);
+  background-size:60px 60px;}
+canvas#bgc{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+/* COVER SECTION */
+.cover{
+  position:relative;z-index:10;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:40px 20px;
+}
+.cover-card{
+  width:100%;max-width:460px;
+  background:rgba(10,10,30,.78);
+  border:1px solid var(--border-c);
+  border-radius:28px;
+  backdrop-filter:blur(36px);
+  -webkit-backdrop-filter:blur(36px);
+  box-shadow:0 0 0 1px rgba(0,198,255,.07),0 30px 80px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06);
+  overflow:hidden;
+  animation:cardIn .85s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(36px) scale(.96)}to{opacity:1;transform:none}}
+.cover-card::before{content:'';position:absolute;top:14px;left:14px;width:20px;height:20px;border-top:1.5px solid rgba(0,198,255,.65);border-left:1.5px solid rgba(0,198,255,.65);z-index:20;pointer-events:none;}
+.cover-card::after{content:'';position:absolute;bottom:14px;right:14px;width:20px;height:20px;border-bottom:1.5px solid rgba(245,166,35,.5);border-right:1.5px solid rgba(245,166,35,.5);z-index:20;pointer-events:none;}
+
+/* HERO BANNER */
+.ch{position:relative;height:160px;
+  background:linear-gradient(135deg,#06101e 0%,#0c1a46 45%,#180a3c 100%);
+  overflow:hidden;display:flex;align-items:flex-end;justify-content:center;
+}
+.ch-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,198,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,198,255,.18) 1px,transparent 1px);
+  background-size:28px 28px;animation:gS 10s linear infinite;
+}
+@keyframes gS{from{background-position:0 0}to{background-position:28px 28px}}
+.ch-glow{position:absolute;width:320px;height:160px;background:radial-gradient(ellipse,rgba(0,198,255,.3) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);}
+.ch-fade{position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to top,rgba(10,10,28,.98),transparent);}
+.doc-badge{
+  position:absolute;top:16px;right:16px;
+  background:linear-gradient(135deg,var(--accent),var(--blue));
+  color:#fff;font-size:9.5px;font-weight:700;letter-spacing:1.5px;
+  padding:5px 12px;border-radius:20px;text-transform:uppercase;
+  box-shadow:0 4px 18px rgba(0,198,255,.4);
+  animation:bP 2.8s ease-in-out infinite;
+}
+@keyframes bP{0%,100%{box-shadow:0 4px 18px rgba(0,198,255,.4)}50%{box-shadow:0 4px 30px rgba(0,198,255,.75)}}
+
+/* AVATAR */
+.av-wrap{position:relative;z-index:5;margin-top:-56px;display:flex;justify-content:center;padding-bottom:6px;}
+.av-ring{width:112px;height:112px;border-radius:50%;padding:3px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--gold));
+  animation:rH 5s linear infinite;
+  box-shadow:0 0 32px rgba(0,198,255,.45),0 0 64px rgba(124,58,237,.2);
+}
+@keyframes rH{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
+.av-inner{width:100%;height:100%;border-radius:50%;
+  background:linear-gradient(135deg,#0d1f52 0%,#1a0a3e 100%);
+  border:3px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:var(--cyan);letter-spacing:-2px;
+  position:relative;
+}
+.av-status{position:absolute;bottom:4px;right:4px;width:14px;height:14px;background:var(--green);border-radius:50%;border:2.5px solid var(--bg);}
+.av-status::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:rgba(34,197,94,.35);animation:pR 2.2s ease infinite;}
+@keyframes pR{0%{transform:scale(1);opacity:.7}75%,100%{transform:scale(2.2);opacity:0}}
+
+/* PROFILE */
+.profile{text-align:center;padding:6px 28px 0;}
+.name{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.8px;
+  background:linear-gradient(135deg,#fff 25%,var(--cyan) 75%);background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:nS 5s linear infinite;line-height:1.1;margin-bottom:7px;
+}
+@keyframes nS{0%{background-position:0 center}100%{background-position:200% center}}
+.title-row{display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:5px;}
+.t-t{font-size:12px;font-weight:500;color:var(--cyan);letter-spacing:.5px;}
+.t-c{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;}
+.tdot{width:3px;height:3px;background:rgba(0,198,255,.35);border-radius:50%;}
+.tagline{font-size:11.5px;color:var(--muted);margin:8px 0 16px;font-style:italic;line-height:1.55;}
+
+/* DOC INFO BOX */
+.doc-info-box{
+  margin:0 20px 20px;
+  background:rgba(0,198,255,.04);border:1px solid rgba(0,198,255,.14);
+  border-radius:16px;padding:16px 18px;
+  border-left:3px solid var(--accent);
+}
+.doc-info-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:6px;}
+.doc-info-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.2;}
+.doc-info-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.doc-stats{display:flex;gap:16px;flex-wrap:wrap;}
+.dstat{text-align:center;}
+.dstat-num{font-size:16px;font-weight:800;color:var(--accent);font-family:'Space Grotesk',sans-serif;letter-spacing:-.5px;}
+.dstat-lbl{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:2px;font-weight:700;}
+
+/* SCROLL CTA */
+.scroll-cta{
+  margin:0 20px 20px;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px;
+  background:linear-gradient(135deg,var(--accent),var(--blue));
+  border-radius:14px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px;
+  cursor:pointer;border:none;width:calc(100% - 40px);font-family:'Inter',sans-serif;
+  box-shadow:0 8px 24px rgba(0,114,255,.35);transition:all .3s;
+  text-decoration:none;
+}
+.scroll-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,114,255,.5);}
+
+.from-row{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 20px;border-top:1px solid var(--border);
+  background:rgba(0,0,0,.22);
+  font-size:10px;color:var(--muted);
+}
+.from-row span{color:var(--cyan);font-weight:700;}
+
+/* DOC SECTION */
+#doc-section{
+  position:relative;z-index:10;
+  border-top:3px solid var(--accent);
+}
+
+/* SPARKLE */
+.sparkle{position:fixed;pointer-events:none;z-index:999;width:3px;height:3px;border-radius:50%;animation:spk linear both;}
+@keyframes spk{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:1;transform:translateY(-20px) scale(1)}100%{opacity:0;transform:translateY(-110px) scale(0)}}
+</style>
+</head>
+<body>
+
+<canvas id="bgc"></canvas>
+<div class="bg-canvas"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<div class="grid-lines"></div>
+
+<!-- ── COVER ── -->
+<section class="cover" id="cover">
+  <div class="cover-card">
+
+    <div class="ch">
+      <div class="ch-grid"></div>
+      <div class="ch-glow"></div>
+      <div class="ch-fade"></div>
+      <div class="doc-badge">📋 Business Plan</div>
+    </div>
+
+    <div class="av-wrap">
+      <div class="av-ring">
+        <div class="av-inner">NS<div class="av-status"></div></div>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="name">Nico Schot</div>
+      <div class="title-row">
+        <span class="t-t">Founder</span><div class="tdot"></div>
+        <span class="t-t">CEO</span><div class="tdot"></div>
+        <span class="t-c">Tech Vision PH</span>
+      </div>
+      <div class="tagline">Sachet Software for Philippine MSMEs — enterprise-grade digital tools,<br>delivered in 48 hours, owned forever.</div>
+    </div>
+
+    <div class="doc-info-box">
+      <div class="doc-info-type">Business Plan</div>
+      <div class="doc-info-title">Tech Vision PH — Full Business Plan</div>
+      <div class="doc-info-desc">A full 18-chapter plan covering market opportunity, product portfolio, go-to-market strategy, financial projections, and team overview for the Philippine MSME digital market.</div>
+      <div class="doc-stats">
+        
+        <div class="dstat"><div class="dstat-num">18</div><div class="dstat-lbl">Chapters</div></div>
+        <div class="dstat"><div class="dstat-num">80+</div><div class="dstat-lbl">Products</div></div>
+        <div class="dstat"><div class="dstat-num">1M+</div><div class="dstat-lbl">MSME Target</div></div>
+        <div class="dstat"><div class="dstat-num">14</div><div class="dstat-lbl">Sectors</div></div>
+    
+      </div>
+    </div>
+
+    <a href="#doc-section" class="scroll-cta">
+      <i class="fas fa-file-alt"></i> Open Tech Vision PH — Full Business Plan
+    </a>
+
+    <div class="from-row">
+      <i class="fas fa-bolt" style="color:var(--gold)"></i>
+      <span>Tech Vision PH</span>
+      <span style="color:var(--muted);margin-left:auto;font-style:italic;">Confidential · Business Plan</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DOCUMENT ── -->
+<div id="doc-section">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Vision PH — Complete Business Plan</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --teal:#028090;--dteal:#015E6B;--mint:#02C39A;--amber:#F5A623;
+  --bg:#F0F7F8;--card:#fff;--text:#1A2937;--muted:#64748B;
+  --border:#D1E8EC;--nav-w:260px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;display:flex;}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;width:var(--nav-w);height:100vh;
+  background:var(--dteal);overflow-y:auto;z-index:100;
+  display:flex;flex-direction:column;
+}
+#nav .nav-brand{
+  padding:20px 16px 14px;border-bottom:1px solid rgba(255,255,255,.15);
+}
+#nav .nav-brand .logo{font-size:18px;font-weight:800;color:#fff;line-height:1.1;}
+#nav .nav-brand .sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;}
+#nav ul{list-style:none;padding:8px 0;}
+#nav ul li a{
+  display:block;padding:7px 16px;font-size:12.5px;color:rgba(255,255,255,.75);
+  text-decoration:none;border-left:3px solid transparent;
+  transition:all .15s;
+}
+#nav ul li a:hover,#nav ul li a.active{
+  color:#fff;background:rgba(255,255,255,.08);border-left-color:var(--mint);
+}
+#nav ul li a .ch{font-size:10px;color:rgba(255,255,255,.4);display:block;margin-bottom:1px;}
+#nav .nav-section{
+  padding:10px 16px 4px;font-size:10px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.35);
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--nav-w);flex:1;min-height:100vh;}
+
+.hero{
+  background:linear-gradient(135deg,#013A44 0%,#015E6B 50%,#028090 100%);
+  color:#fff;padding:60px 48px 50px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 75% 50%,rgba(2,195,154,.18) 0%,transparent 65%);
+}
+.hero-badge{
+  display:inline-block;background:rgba(2,195,154,.2);border:1px solid rgba(2,195,154,.4);
+  color:#02C39A;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;margin-bottom:14px;position:relative;
+}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-1px;margin-bottom:8px;position:relative;}
+.hero h1 span{color:#02C39A;}
+.hero .tagline{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:28px;max-width:600px;position:relative;}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;position:relative;}
+.hero-stat .num{font-size:28px;font-weight:800;color:#02C39A;}
+.hero-stat .lbl{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px;}
+.confidential{
+  font-size:11px;color:rgba(255,255,255,.45);position:relative;
+  margin-top:20px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px;
+}
+
+/* ── CHAPTER ── */
+.chapter{
+  padding:48px 48px 32px;border-bottom:1px solid var(--border);
+  max-width:960px;
+}
+.ch-header{border-left:5px solid var(--teal);padding-left:16px;margin-bottom:24px;}
+.ch-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);display:block;margin-bottom:4px;}
+.ch-header h2{font-size:26px;font-weight:800;color:var(--dteal);}
+.chapter h3{font-size:18px;font-weight:700;color:var(--dteal);margin:24px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--border);}
+.chapter h4{font-size:15px;font-weight:700;color:var(--teal);margin:18px 0 8px;}
+.chapter p{font-size:14px;color:var(--muted);margin-bottom:12px;line-height:1.7;}
+.chapter ul{margin:0 0 14px 20px;}
+.chapter ul li{font-size:14px;color:var(--muted);margin-bottom:6px;line-height:1.6;}
+.chapter ul li strong{color:var(--text);}
+
+/* ── CALLOUTS ── */
+.callout{border-radius:10px;padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.65;}
+.callout-info{background:#D5E8F0;border-left:4px solid var(--teal);color:var(--text);}
+.callout-success{background:#D5EDD8;border-left:4px solid #2E7D32;color:#1a3320;}
+.callout-warn{background:#FFF3CD;border-left:4px solid var(--amber);color:#5a3e00;}
+.callout-red{background:#FCE4EC;border-left:4px solid #C62828;color:#4a0010;}
+.callout strong{display:block;margin-bottom:4px;font-size:14px;}
+
+/* ── STAT CARDS ── */
+.stat-row{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0;}
+.stat-card{
+  background:var(--card);border-radius:12px;padding:20px 24px;
+  border-top:4px solid var(--teal);flex:1;min-width:140px;
+  box-shadow:0 2px 10px rgba(2,128,144,.08);text-align:center;
+}
+.stat-card.amber{border-top-color:var(--amber);}
+.stat-card.mint{border-top-color:var(--mint);}
+.stat-num{font-size:32px;font-weight:800;color:var(--teal);line-height:1;}
+.stat-card.amber .stat-num{color:var(--amber);}
+.stat-card.mint .stat-num{color:var(--mint);}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.3;}
+
+/* ── TABLES ── */
+.tbl-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{background:var(--teal);}
+thead th{color:#fff;padding:10px 12px;text-align:left;font-weight:700;font-size:12px;letter-spacing:.3px;}
+tbody tr:nth-child(even){background:#EEF6FA;}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
+tbody td strong,td b{color:var(--text);}
+table.tight td,table.tight th{padding:6px 10px;}
+
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:16px 0;}
+.product-card{background:var(--card);border-radius:10px;padding:16px;border-left:4px solid var(--teal);box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.product-card.legal{border-left-color:var(--amber);}
+.product-card.food{border-left-color:#E53E3E;}
+.product-card.service{border-left-color:var(--mint);}
+.product-card.finance{border-left-color:#805AD5;}
+.product-card.health{border-left-color:#DD6B20;}
+.product-card.agri{border-left-color:#38A169;}
+.product-card .pname{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.product-card .pdesc{font-size:12px;color:var(--muted);line-height:1.5;}
+.product-card .pscore{
+  display:inline-block;margin-top:8px;font-size:11px;font-weight:700;
+  background:var(--bg);padding:2px 8px;border-radius:10px;color:var(--teal);
+}
+
+/* ── TIER BLOCKS ── */
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:16px 0;}
+.tier-block{border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.tier-head{padding:16px 20px;color:#fff;font-weight:800;font-size:15px;}
+.t1 .tier-head{background:var(--teal);}
+.t2 .tier-head{background:var(--dteal);}
+.t3 .tier-head{background:#1A2937;}
+.tier-head .tprice{font-size:20px;display:block;margin-top:2px;}
+.tier-body{background:var(--card);padding:16px 20px;}
+.tier-body ul{margin-left:16px;}
+.tier-body ul li{font-size:13px;color:var(--muted);margin-bottom:5px;}
+
+/* ── PHASE BLOCKS ── */
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+.phase-block{border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.phase-head{padding:14px 18px;color:#fff;}
+.ph1 .phase-head{background:var(--teal);}
+.ph2 .phase-head{background:var(--dteal);}
+.ph3 .phase-head{background:var(--mint);color:#1A2937;}
+.phase-head .ph-days{font-size:18px;font-weight:800;display:block;}
+.phase-head .ph-title{font-size:12px;opacity:.8;font-weight:600;margin-top:2px;}
+.phase-body{background:var(--card);padding:16px 18px;}
+.phase-body ul{margin-left:16px;}
+.phase-body ul li{font-size:13px;color:var(--muted);margin-bottom:5px;}
+
+/* ── SCENARIO CARDS ── */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+.scenario-block{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.sc-head{padding:14px 18px;color:#fff;}
+.sc1 .sc-head{background:#4A5568;}
+.sc2 .sc-head{background:var(--teal);}
+.sc3 .sc-head{background:#1A7A50;}
+.sc-head .sc-rev{font-size:24px;font-weight:800;color:#02C39A;}
+.sc3 .sc-head .sc-rev{color:var(--amber);}
+.sc-head .sc-title{font-size:12px;opacity:.8;margin-top:4px;}
+.sc-body{padding:14px 18px;}
+.sc-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);color:var(--muted);}
+.sc-row:last-child{border-bottom:none;}
+.sc-row .scv{font-weight:700;color:var(--text);}
+
+/* ── RISK TABLE ── */
+.risk-high{color:#C62828;font-weight:700;}
+.risk-medium{color:#F59E0B;font-weight:700;}
+.risk-low{color:#2E7D32;font-weight:700;}
+
+/* ── CHART ── */
+.chart-wrap{background:var(--dteal);border-radius:14px;padding:24px;margin:20px 0;}
+
+/* ── MOATS ── */
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.moat{background:var(--card);border-radius:10px;padding:18px;border-bottom:4px solid var(--teal);box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.moat .icon{font-size:24px;margin-bottom:8px;}
+.moat h4{font-size:14px;font-weight:700;color:var(--dteal);margin-bottom:6px;}
+.moat p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* ── COMPETITOR CARDS ── */
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0;}
+.comp-card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.comp-head{background:#1A2937;color:#fff;padding:10px 16px;font-size:13px;font-weight:700;}
+.comp-body{padding:14px 16px;}
+.comp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.comp-col h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
+.comp-col.green h5{color:#2E7D32;}
+.comp-col.red h5{color:#C62828;}
+.comp-col ul{margin-left:14px;}
+.comp-col ul li{font-size:12px;color:var(--muted);margin-bottom:3px;}
+
+/* ── EXEC SUMMARY ── */
+#exec .exec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0;}
+.exec-box{background:var(--card);border-radius:10px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.exec-box h4{color:var(--dteal);font-size:14px;font-weight:700;margin-bottom:10px;}
+
+/* ── GTAG / CHIP ── */
+.chip{
+  display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;
+  margin:2px;
+}
+.chip-teal{background:#D5E8F0;color:var(--dteal);}
+.chip-green{background:#D5EDD8;color:#1a4d2e;}
+.chip-amber{background:#FFF3CD;color:#78500a;}
+
+/* ── RESP ── */
+@media(max-width:768px){
+  #nav{display:none;}
+  #main{margin-left:0;}
+  .chapter{padding:32px 20px;}
+  .phase-grid,.scenario-grid,.moat-grid{grid-template-columns:1fr;}
+  .comp-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="logo">Tech Vision PH</div>
+    <div class="sub">Complete Business Plan · Feb 2026</div>
+  </div>
+  <ul>
+    <li><a href="#hero"><span class="ch">Overview</span>Cover & Summary</a></li>
+    <li><a href="#exec"><span class="ch">Executive</span>Executive Summary</a></li>
+  </ul>
+  <div class="nav-section">Company</div>
+  <ul>
+    <li><a href="#ch1"><span class="ch">Ch 1</span>Founder & Overview</a></li>
+    <li><a href="#ch2"><span class="ch">Ch 2</span>The Problem</a></li>
+    <li><a href="#ch3"><span class="ch">Ch 3</span>Sachet Software</a></li>
+  </ul>
+  <div class="nav-section">Products</div>
+  <ul>
+    <li><a href="#ch4"><span class="ch">Ch 4</span>Full Product Portfolio</a></li>
+    <li><a href="#ch5"><span class="ch">Ch 5</span>Legal Tech Vertical</a></li>
+    <li><a href="#ch6"><span class="ch">Ch 6</span>Pricing & Tiers</a></li>
+    <li><a href="#ch7"><span class="ch">Ch 7</span>SaaS Automation</a></li>
+  </ul>
+  <div class="nav-section">Go-to-Market</div>
+  <ul>
+    <li><a href="#ch8"><span class="ch">Ch 8</span>Agent Model</a></li>
+    <li><a href="#ch9"><span class="ch">Ch 9</span>GTM Strategy</a></li>
+    <li><a href="#ch10"><span class="ch">Ch 10</span>Competitive Analysis</a></li>
+  </ul>
+  <div class="nav-section">Financials</div>
+  <ul>
+    <li><a href="#ch11"><span class="ch">Ch 11</span>Financial Projections</a></li>
+    <li><a href="#ch12"><span class="ch">Ch 12</span>Unit Economics</a></li>
+    <li><a href="#ch13"><span class="ch">Ch 13</span>Funding Structure</a></li>
+  </ul>
+  <div class="nav-section">Operations</div>
+  <ul>
+    <li><a href="#ch14"><span class="ch">Ch 14</span>Technology & IP</a></li>
+    <li><a href="#ch15"><span class="ch">Ch 15</span>Legal & Compliance</a></li>
+    <li><a href="#ch16"><span class="ch">Ch 16</span>Risk Analysis</a></li>
+    <li><a href="#ch17"><span class="ch">Ch 17</span>Future Growth</a></li>
+  </ul>
+  <div class="nav-section">Execution</div>
+  <ul>
+    <li><a href="#ch18"><span class="ch">Ch 18</span>90-Day Validation</a></li>
+  </ul>
+</nav>
+
+<div id="main">
+
+<div id="hero" class="hero">
+  <div class="hero-badge">Confidential Business Plan · February 2026</div>
+  <h1>Tech Vision <span>PH</span></h1>
+  <p class="tagline">Digital Transformation for Philippine MSMEs — Presented to Prestige Protocol</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">₱5.2M</div><div class="lbl">Year 1 Revenue Target</div></div>
+    <div class="hero-stat"><div class="num">1M+</div><div class="lbl">MSMEs Addressable</div></div>
+    <div class="hero-stat"><div class="num">80+</div><div class="lbl">Products Built</div></div>
+    <div class="hero-stat"><div class="num">34%</div><div class="lbl">Net Margin (Base Case)</div></div>
+    <div class="hero-stat"><div class="num">₱600K</div><div class="lbl">Angel Round</div></div>
+    <div class="hero-stat"><div class="num">12.5×</div><div class="lbl">Base Case 5-yr Return</div></div>
+  </div>
+  <div class="confidential">Nico Schot · Founder & CEO · nicoschotjenl1309@gmail.com · Makati City, Philippines &nbsp;|&nbsp; Confidential — Prepared February 2026</div>
+</div>
+
+<section id="exec" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<h2>Executive Summary</h2>
+</div>
+<p>Tech Vision PH is a Philippine-based digital products company founded by Nico Schot, a Dutch-Filipino entrepreneur with a background in digital product development and business consulting. We build <strong>"Sachet Software"</strong> — enterprise-grade digital tools priced for the Filipino micro, small, and medium enterprise (MSME) market. Our products are delivered as Single-Page Applications (SPAs) and Progressive Web Apps (PWAs) that work fully offline, require no servers, and are purchased once with no recurring fees.</p>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num">1M+</div><div class="stat-lbl">Registered PH MSMEs</div></div>
+<div class="stat-card"><div class="stat-num">< 15%</div><div class="stat-lbl">Have digital tools</div></div>
+<div class="stat-card"><div class="stat-num">₱5.2M</div><div class="stat-lbl">Year 1 revenue target</div></div>
+<div class="stat-card"><div class="stat-num">34%</div><div class="stat-lbl">Net margin (base case)</div></div>
+<div class="stat-card"><div class="stat-num">80+</div><div class="stat-lbl">Products built & ready</div></div>
+</div>
+<div class="exec-grid">
+<div class="exec-box">
+<h4>The Opportunity</h4>
+<p>The Philippines has over 1 million registered MSMEs contributing ~35% of GDP. Yet fewer than 15% have meaningful digital infrastructure. The majority rely on paper records, manual bookkeeping, and word-of-mouth. Existing solutions fail them: SaaS platforms require stable internet and monthly subscriptions; local agencies charge ₱30,000–₱80,000 per project. Tech Vision PH bridges this gap with offline-first, one-time-purchase products built for Filipino business culture.</p>
+</div>
+<div class="exec-box">
+<h4>Our Business Model</h4>
+<ul>
+<li><strong>Self-Serve Downloads (Sachet Tier):</strong> Standardized SPA/PWA dashboards priced ₱299–₱1,499, downloadable directly from the website. Automated via SaaS customization tool.</li>
+<li><strong>Agent-Sold Packages (Growth Tier):</strong> Personalized packages ₱12,000–₱28,000 sold by commission-only field agents with pre-customized demo kits.</li>
+<li><strong>Premium / Enterprise:</strong> Full custom ₱35,000–₱275,000 for law firms, clinics, investment companies.</li>
+<li><strong>Legal Tech Vertical:</strong> 8+ dedicated Prestige Protocol products at ₱16,500–₱275,000.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-info"><strong>Why Prestige Protocol?</strong> We present this plan to Prestige Protocol because partnerships in the professional services sector create mutual value at every stage — for the partner as an early-access client receiving purpose-built tools at pre-commercial pricing, and for Tech Vision PH as an opportunity to validate the legal tech vertical with a credible anchor relationship.</div>
+</section>
+<section id="ch1" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 1</span>
+<h2>Founder & Company Overview</h2>
+</div>
+<h3>About the Founder</h3>
+<p>Nico Schot is a Dutch-Filipino entrepreneur based in Makati City, Philippines. With a background in digital product development and business consulting, Nico has built a portfolio of over <strong>80 digital products</strong> — SPA dashboards, PWA tools, and business intelligence platforms — establishing product quality and a launch-ready portfolio ahead of the Philippine market entry.</p>
+<p>Nico's dual cultural identity gives him a unique perspective: the systematic product-building discipline of European business culture combined with deep personal knowledge of Filipino business relationships, the importance of personal trust (<em>tiwala</em>), and the cash-flow realities of Philippine MSMEs.</p>
+<h3>The Company</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Detail</th>
+<th>Information</th>
+</tr></thead><tbody>
+<tr>
+<td>Legal Structure</td>
+<td>Sole Proprietorship → OPC/Corporation (upon scaling)</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Makati City, Metro Manila, Philippines</td>
+</tr>
+<tr>
+<td>Founded</td>
+<td>2024</td>
+</tr>
+<tr>
+<td>Founder</td>
+<td>Nico Schot</td>
+</tr>
+<tr>
+<td>Core Product</td>
+<td>SPA/PWA Digital Products — Offline-First, One-Time Purchase</td>
+</tr>
+<tr>
+<td>Current Revenue</td>
+<td>Pre-revenue: 80+ products built and ready for Philippine market launch</td>
+</tr>
+<tr>
+<td>Products Built</td>
+<td>80+ SPAs, dashboards, and digital tools across 14+ sectors</td>
+</tr>
+</tbody></table></div>
+<h3>The Sachet Philosophy</h3>
+<p>The 'sachet economy' is deeply embedded in Filipino consumer behaviour. Rather than a monthly gym membership, they pay ₱50 per session. Rather than a long-term software subscription, they want to pay once and own it. Tech Vision PH's entire product strategy is built around this insight: enterprise-quality digital tools, sold in one-time 'sachets' at prices Filipino MSMEs can actually afford.</p>
+<h3>Why the Philippines, Why Now?</h3>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num">60M+</div><div class="stat-lbl">Filipinos on GCash/Maya</div></div>
+<div class="stat-card"><div class="stat-num">70%</div><div class="stat-lbl">Smartphone penetration Metro Manila</div></div>
+<div class="stat-card"><div class="stat-num">50%</div><div class="stat-lbl">Gov't GDP target from digital 2030</div></div>
+<div class="stat-card"><div class="stat-num">< 15%</div><div class="stat-lbl">MSME digital adoption today</div></div>
+</div>
+</section>
+<section id="ch2" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 2</span>
+<h2>The Problem — Philippine MSME Digital Gap</h2>
+</div>
+<div class="callout callout-info"><strong>Philippine MSME Market Facts (DTI/PSA Data)</strong><br>→ 1,000,361 registered MSMEs — 99.5% of all businesses<br>→ Employ 63% of the national workforce (8.4M workers)<br>→ Contribute 35.7% of GDP — ₱8.1 trillion in economic output<br>→ Metro Manila: 50,000+ retail establishments, 13.5M population<br>→ Digital tool adoption: fewer than 15% have any formal digital infrastructure<br>→ Average MSME spends ₱0 per month on business software</div>
+<h3>Sector-Specific Pain Points</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Sector</th>
+<th>Core Pain Point</th>
+<th>Market at Risk</th>
+</tr></thead><tbody>
+<tr>
+<td>Restaurants (15,000+ Metro Manila)</td>
+<td>30–40% peak capacity lost to no-shows</td>
+<td>₱180B annual sector revenue</td>
+</tr>
+<tr>
+<td>Beauty & Wellness (8,000+)</td>
+<td>65% bookings via phone, 20–25% no-show rate</td>
+<td>₱45B annual market, <5% digital</td>
+</tr>
+<tr>
+<td>Fitness Centers (600+)</td>
+<td>40–60% annual member churn</td>
+<td>₱18B annual market</td>
+</tr>
+<tr>
+<td>Retail Shops (25,000+)</td>
+<td>Inventory blind spots across branches</td>
+<td>₱1.2T annual retail sales</td>
+</tr>
+<tr>
+<td>Sari-Sari Stores (1M+ nationwide)</td>
+<td>No inventory tracking, losses from spoilage & theft</td>
+<td>₱500B+ micro-retail</td>
+</tr>
+<tr>
+<td>Legal Services (3,000+ firms)</td>
+<td>Manual case tracking, paper billing, no CRM</td>
+<td>₱120B+ professional services</td>
+</tr>
+<tr>
+<td>Pharmacies (12,000+)</td>
+<td>Manual stock counts, expiry tracking failures</td>
+<td>₱200B pharmaceutical retail</td>
+</tr>
+<tr>
+<td>Agriculture / Palengke (500K+)</td>
+<td>No pricing data, no yield tracking</td>
+<td>₱1.4T agricultural sector</td>
+</tr>
+</tbody></table></div>
+<h3>Why Existing Solutions Fail</h3>
+<ul>
+<li><strong>Cost:</strong> SaaS platforms (Shopify, QuickBooks, Xero) charge ₱1,500–₱6,000/month — more than many MSMEs' entire monthly profit margin.</li>
+<li><strong>Internet dependency:</strong> Most enterprise software requires constant connectivity. In provincial areas and even parts of Metro Manila, internet is intermittent.</li>
+<li><strong>Complexity:</strong> Tools designed for Western SMEs require training, IT support, and ongoing maintenance that Filipino micro-business owners cannot afford.</li>
+<li><strong>Language mismatch:</strong> Tools are in English, use foreign business logic, and don't reflect how Filipino businesses actually operate.</li>
+<li><strong>Agency costs:</strong> Local web agencies charge ₱30,000–₱80,000 per website with 4–8 week delivery, no standardization, and no after-service support.</li>
+</ul>
+<h3>The Market Gap in Numbers</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Market Segment</th>
+<th>Estimated Count</th>
+<th>Addressable @ 1% Penetration</th>
+<th>Avg Revenue/Client</th>
+</tr></thead><tbody>
+<tr>
+<td>Metro Manila MSMEs (Sachet Tier)</td>
+<td>150,000</td>
+<td>1,500 downloads/year</td>
+<td>₱800 avg</td>
+</tr>
+<tr>
+<td>Small Business (Growth Package)</td>
+<td>50,000</td>
+<td>500 clients/year</td>
+<td>₱20,000 avg</td>
+</tr>
+<tr>
+<td>Mid-size Business (Premium)</td>
+<td>10,000</td>
+<td>100 clients/year</td>
+<td>₱58,000 avg</td>
+</tr>
+<tr>
+<td>Law Firms & Professional Services</td>
+<td>3,000</td>
+<td>30 firms/year</td>
+<td>₱150,000 avg</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch3" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 3</span>
+<h2>The "Sachet Software" Solution</h2>
+</div>
+<p>"Sachet Software" is the core philosophy of Tech Vision PH: deliver enterprise-quality digital tools at the price point of a sachet of coffee. Not stripped-down, inferior versions of enterprise tools — but purpose-built, fully functional products designed from the start for the Philippine MSME context.</p>
+<h3>Technical Architecture</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Technology</th>
+<th>What It Means for the Customer</th>
+</tr></thead><tbody>
+<tr>
+<td>Single-Page Application (SPA)</td>
+<td>Runs entirely in the browser. No installation, no app store, no IT setup.</td>
+</tr>
+<tr>
+<td>Progressive Web App (PWA)</td>
+<td>Can be 'installed' on any phone or tablet like a native app — works on iOS and Android.</td>
+</tr>
+<tr>
+<td>Offline-First Architecture</td>
+<td>Full functionality without internet connection. Data syncs automatically when connectivity resumes.</td>
+</tr>
+<tr>
+<td>Local Storage / IndexedDB</td>
+<td>All business data stored securely on the device. No cloud server costs or data breaches.</td>
+</tr>
+<tr>
+<td>Zero Server Infrastructure</td>
+<td>No monthly hosting costs for the customer. The product works forever after purchase.</td>
+</tr>
+<tr>
+<td>Responsive Design</td>
+<td>Equally usable on mobile phone, tablet, or desktop computer.</td>
+</tr>
+</tbody></table></div>
+<h3>The SaaS Automation Layer</h3>
+<p>Beyond the individual products, Tech Vision PH is building an automation layer that dramatically reduces customization time and cost:</p>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Step</th>
+<th>Action</th>
+<th>Time Required</th>
+</tr></thead><tbody>
+<tr>
+<td>1. Customer Signup</td>
+<td>Customer visits techvisionph.com, selects product, pays via GCash/Maya/card</td>
+<td>2 minutes</td>
+</tr>
+<tr>
+<td>2. API Key Generation</td>
+<td>System automatically generates unique API key for customer account</td>
+<td>Instant</td>
+</tr>
+<tr>
+<td>3. Business Data Form</td>
+<td>Customer fills pre-structured form: business name, address, products, logo colors</td>
+<td>5–10 minutes</td>
+</tr>
+<tr>
+<td>4. Auto-Customization</td>
+<td>SaaS tool injects customer data into chosen SPA template — logos, colors, labels</td>
+<td>2–5 minutes</td>
+</tr>
+<tr>
+<td>5. Delivery</td>
+<td>Customized product delivered as downloadable ZIP or hosted URL with subdomain</td>
+<td>Instant</td>
+</tr>
+<tr>
+<td>6. Upgrade Trigger</td>
+<td>When customer requests upgrade, new API call processes payment and delivers update</td>
+<td>Instant</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-success"><strong>Customer Value Proposition</strong><br>→ Works without internet — critical for provincial and low-connectivity areas<br>→ One-time purchase — no subscription anxiety, no credit card on file<br>→ Filipino-first design — Tagalog labels, peso currency, local business logic<br>→ Ready in minutes (self-serve) or days (agent-sold) — not weeks<br>→ Priced from ₱299 — lower than a family dinner in Jollibee<br>→ 80+ products available immediately — widest selection in market</div>
+</section>
+<section id="ch4" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 4</span>
+<h2>Full Product Portfolio — All MSME Sectors</h2>
+</div>
+<p>Tech Vision PH has built 80+ digital products across 14 sectors. The core sellable catalog consists of 26 rigorously selected products across 7 major MSME categories.</p>
+<h3>1. Retail & Sari-Sari Store</h3>
+<div class="product-grid">
+<div class="product-card"><div class="pname">TindahanPro Inventory & Sales Tracker</div><div class="pdesc">Complete POS and inventory dashboard for sari-sari stores and small retail</div><span class="pscore">Priority: 10/10 — First Launch</span></div>
+<div class="product-card"><div class="pname">Sari-Sari Store Daily Sales Dashboard</div><div class="pdesc">Daily revenue tracking, top sellers, cash flow summary</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card"><div class="pname">Product Pricing Calculator</div><div class="pdesc">Markup, VAT, and suggested retail price calculator</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card"><div class="pname">Stock Alert & Reorder System</div><div class="pdesc">Automated low-stock alerts with supplier contact management</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card"><div class="pname">Retail POS Lite</div><div class="pdesc">Point-of-sale interface for counter staff with receipt generation</div><span class="pscore">Priority: 7/10</span></div>
+</div>
+<h3>2. Food & Restaurant</h3>
+<div class="product-grid">
+<div class="product-card food"><div class="pname">Karinderya Order Management</div><div class="pdesc">Table orders, kitchen queue, and billing for carinderia/restaurant</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card food"><div class="pname">Menu Builder & Pricing Tool</div><div class="pdesc">Digital menu creation with food cost and margin analysis</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card food"><div class="pname">Food Cost Calculator</div><div class="pdesc">Recipe costing, ingredient tracking, profit per dish</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card food"><div class="pname">Kitchen Inventory Tracker</div><div class="pdesc">Perishables management with FIFO and waste reduction tracking</div><span class="pscore">Priority: 8/10</span></div>
+</div>
+<h3>3. Services & Booking (Salons, Clinics, Home Services)</h3>
+<div class="product-grid">
+<div class="product-card service"><div class="pname">Salon Appointment Scheduler</div><div class="pdesc">24/7 booking calendar, stylist availability, automated reminders</div><span class="pscore">Priority: 10/10</span></div>
+<div class="product-card service"><div class="pname">Service Business CRM Lite</div><div class="pdesc">Client records, visit history, loyalty tracking</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card service"><div class="pname">Freelancer Project Tracker</div><div class="pdesc">Projects, milestones, invoicing for independent professionals</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card service"><div class="pname">Home Service Booking System</div><div class="pdesc">Plumber/electrician/cleaner scheduling and job tracking</div><span class="pscore">Priority: 7/10</span></div>
+</div>
+<h3>4. Finance & Accounting</h3>
+<div class="product-grid">
+<div class="product-card finance"><div class="pname">MSME Bookkeeping Dashboard</div><div class="pdesc">Income, expenses, P&L statement — BIR-aligned format</div><span class="pscore">Priority: 10/10</span></div>
+<div class="product-card finance"><div class="pname">Expense & Receipt Tracker</div><div class="pdesc">Photo-based receipt capture, category tagging, monthly reports</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card finance"><div class="pname">Daily Cash Flow Monitor</div><div class="pdesc">Opening balance, inflows, outflows, closing cash — daily</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card finance"><div class="pname">Loan & Payment Calculator</div><div class="pdesc">Amortization tables, early payment savings, multi-loan tracker</div><span class="pscore">Priority: 7/10</span></div>
+</div>
+<h3>5. Transport & Logistics</h3>
+<div class="product-grid">
+<div class="product-card"><div class="pname">Delivery Route Optimizer</div><div class="pdesc">Multi-stop route planning for small delivery businesses</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card"><div class="pname">Fleet Management Lite</div><div class="pdesc">Vehicle maintenance, fuel tracking, driver performance</div><span class="pscore">Priority: 7/10</span></div>
+<div class="product-card"><div class="pname">Tricycle/Jeepney TODA Tracker</div><div class="pdesc">Route income, boundary tracking, driver records for operators</div><span class="pscore">Priority: 8/10</span></div>
+</div>
+<h3>6. Health & Pharmacy</h3>
+<div class="product-grid">
+<div class="product-card health"><div class="pname">Pharmacy Inventory System</div><div class="pdesc">Drug stock management, expiry alerts, reorder tracking</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card health"><div class="pname">Patient Record Lite</div><div class="pdesc">SOAP notes, consultation history, basic EHR for rural clinics</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card health"><div class="pname">Clinic Appointment Scheduler</div><div class="pdesc">Doctor/dentist booking with patient queue management</div><span class="pscore">Priority: 9/10</span></div>
+</div>
+<div class="callout callout-warn"><strong>Note:</strong> Pharmacy and healthcare products are subject to FDA/DOH regulatory review before commercial launch. See Risk Analysis (Chapter 16) for compliance roadmap.</div>
+<h3>7. Agriculture & Market Vendors</h3>
+<div class="product-grid">
+<div class="product-card agri"><div class="pname">Palengke Vendor Sales Tracker</div><div class="pdesc">Daily market stall income, product tracking, profit per item</div><span class="pscore">Priority: 9/10</span></div>
+<div class="product-card agri"><div class="pname">Farm Expense & Yield Monitor</div><div class="pdesc">Input costs, harvest yield, profitability per crop cycle</div><span class="pscore">Priority: 8/10</span></div>
+<div class="product-card agri"><div class="pname">Crop Cycle & Harvest Planner</div><div class="pdesc">Planting calendar, growth milestones, weather-based alerts</div><span class="pscore">Priority: 7/10</span></div>
+</div>
+</section>
+<section id="ch5" class="chapter">
+<div class="ch-header" style="border-left-color:#F5A623">
+<span class="ch-num">Chapter 5</span>
+<h2>Prestige Protocol — Legal Tech Vertical</h2>
+</div>
+<div class="callout callout-warn"><strong>Why Legal Tech is a Priority Vertical</strong><br>→ Philippine professional services market: ₱120B+ annually<br>→ 3,000+ legal and consulting practices in Metro Manila (IBP registry)<br>→ Estimated 85–90% of solo practitioners operate without dedicated digital tools<br>→ High willingness to pay: legal professionals earn ₱100,000–₱500,000+/month<br>→ Clio (global legal tech leader at $49–$129/month) has minimal Philippine adoption<br>→ Tech Vision PH would be the <strong>first dedicated Philippine legal SPA provider</strong></div>
+<h3>Legal Tech Product Suite</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Product Name</th>
+<th>Target User</th>
+<th>Key Features</th>
+<th>Pricing</th>
+</tr></thead><tbody>
+<tr>
+<td>Legal CRM Dashboard</td>
+<td>Law firms (1–20 attorneys)</td>
+<td>Client records, case history, contact management, billing summary</td>
+<td>₱45,000–₱85,000</td>
+</tr>
+<tr>
+<td>Case Tracking & Docketing System</td>
+<td>Litigation lawyers</td>
+<td>Hearing calendar, filing deadlines, case status dashboard</td>
+<td>₱55,000–₱120,000</td>
+</tr>
+<tr>
+<td>Legal Time & Billing Tracker</td>
+<td>Solo practitioners & firms</td>
+<td>Time entries, hourly billing, invoice generation, retainer management</td>
+<td>₱28,000–₱65,000</td>
+</tr>
+<tr>
+<td>Contract Document Manager</td>
+<td>Transactional lawyers</td>
+<td>Document version control, signature tracking, template library</td>
+<td>₱35,000–₱90,000</td>
+</tr>
+<tr>
+<td>Client Intake & Onboarding Form</td>
+<td>All law firms</td>
+<td>Digital intake forms, conflict of interest checks, engagement letters</td>
+<td>₱16,500–₱35,000</td>
+</tr>
+<tr>
+<td>Corporate Compliance Tracker</td>
+<td>Investment firms & corporate counsel</td>
+<td>SEC filing deadlines, board meeting records, equity table management</td>
+<td>₱65,000–₱150,000</td>
+</tr>
+<tr>
+<td>Legal Research Dashboard</td>
+<td>All attorneys</td>
+<td>Case law bookmarks, statute index, research notes organizer</td>
+<td>₱18,000–₱45,000</td>
+</tr>
+<tr>
+<td>Investor Relations Dashboard</td>
+<td>Investment holding companies</td>
+<td>Portfolio tracking, dividend records, investor communication log</td>
+<td>₱85,000–₱275,000</td>
+</tr>
+</tbody></table></div>
+<h3>Prestige Protocol Recommended Bundle</h3>
+<div class="callout callout-success"><strong>Bundle Total (Partner Price): ₱375,000</strong> (savings of ₱165,000 vs. individual pricing)<br>→ Legal CRM Dashboard: ₱65,000 (partner pricing, standard ₱85,000)<br>→ Corporate Compliance Tracker: ₱110,000 (partner, standard ₱150,000)<br>→ Investor Relations Dashboard: ₱200,000 (partner, standard ₱275,000)<br>→ Includes: Full customization, Prestige Protocol branding, 3 months priority support, 1 free upgrade per product</div>
+</section>
+<section id="ch6" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 6</span>
+<h2>Three-Tier Service & Pricing Model</h2>
+</div>
+<div class="tier-grid">
+<div class="tier-block t1"><div class="tier-head">Tier 1 — Sachet<span class="tprice">₱299 – ₱1,499</span></div><div class="tier-body">
+<ul>
+<li>Target: Micro-enterprises, sari-sari stores, solo service providers, market vendors</li>
+<li>Delivery: Instant download, automated via SaaS tool</li>
+<li>Customization: Self-service via API key + pre-filled data form</li>
+<li>Support: Documentation only — no direct support (keeps cost structure lean)</li>
+<li>Upgrade: Optional ₱150–₱500 per feature update, processed automatically</li>
+</ul>
+</div></div>
+<div class="tier-block t2"><div class="tier-head">Tier 2 — Growth<span class="tprice">₱12,000 – ₱28,000</span></div><div class="tier-body">
+<ul>
+<li>Target: Small restaurants, salons, retail shops (1–10 employees)</li>
+<li>Delivery: Agent-sold — 3–5 business day customization after sale</li>
+<li>Agent Demo: Client-specific demo prepared BEFORE the sales visit — prospect sees their own business</li>
+<li>Includes: 1 product + full branding + installation support</li>
+<li>Upgrade: Optional ₱500/₱1,000 per update (design refresh, new module)</li>
+</ul>
+</div></div>
+<div class="tier-block t3"><div class="tier-head">Tier 3 — Premium / Enterprise<span class="tprice">₱35,000 – ₱275,000</span></div><div class="tier-body">
+<ul>
+<li>Target: Established restaurants, clinics, law firms, investment companies</li>
+<li>Delivery: 1–3 weeks depending on complexity</li>
+<li>Customization: Fully bespoke — custom features, multi-branch support, API integrations</li>
+<li>Includes: Multiple products bundled, full training, priority support 6 months</li>
+<li>Upgrade: ₱1,500/₱5,000/₱15,000 depending on scope</li>
+</ul>
+</div></div>
+</div>
+<h3>Revenue Mix Projection — Year 1</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Tier</th>
+<th>Year 1 Volume</th>
+<th>Avg Revenue/Sale</th>
+<th>Year 1 Revenue</th>
+<th>% of Total</th>
+</tr></thead><tbody>
+<tr>
+<td>Tier 1 — Sachet Downloads</td>
+<td>1,500 units</td>
+<td>₱800</td>
+<td>₱1,200,000</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>Tier 2 — Growth Packages</td>
+<td>140 clients</td>
+<td>₱18,000</td>
+<td>₱2,520,000</td>
+<td>48%</td>
+</tr>
+<tr>
+<td>Tier 3 — Premium/Enterprise</td>
+<td>20 clients</td>
+<td>₱74,000</td>
+<td>₱1,480,000</td>
+<td>29%</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>₱5,200,000</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Growth Tier Package Details</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Package</th>
+<th>Contents</th>
+<th>Delivery</th>
+<th>Agent Commission</th>
+</tr></thead><tbody>
+<tr>
+<td>Growth Starter — ₱12,000</td>
+<td>1 SPA product, full branding, PDF setup guide</td>
+<td>48 hours</td>
+<td>₱1,800 (15%)</td>
+</tr>
+<tr>
+<td>Growth Standard — ₱20,000</td>
+<td>1–2 SPAs, full customization, 30-min agent walkthrough</td>
+<td>3–5 days</td>
+<td>₱3,000 (15%)</td>
+</tr>
+<tr>
+<td>Growth Plus — ₱28,000</td>
+<td>2–3 SPAs, advanced customization, 60-min training session</td>
+<td>1 week</td>
+<td>₱4,200 (15%)</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch7" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 7</span>
+<h2>SaaS Automation & Self-Serve Platform</h2>
+</div>
+<p>The Tech Vision PH SaaS automation platform is the operational engine that makes the Sachet tier economically viable at scale. Without automation, customizing 1,500 individual products per year would require a full-time team. With automation, it becomes a one-person side-process.</p>
+<div class="callout callout-success"><strong>Automation Economics</strong><br>→ Without automation: 1 hour/customization × 1,500 clients = 1,500 hours = ₱150,000+ in labor cost<br>→ With automation: 5 minutes/customization × 1,500 clients = 125 hours = ₱12,500 in labor cost<br>→ <strong>Automation saves ₱137,500/year in Year 1 alone</strong> — growing as volume scales<br>→ Enables solo founder to operate Tier 1 without additional headcount until Year 2<br>→ Creates a defensible moat: custom-built Philippine automation vs. one-size-fits-all Western tools</div>
+<h3>Technology Components</h3>
+<ul>
+<li><strong>Frontend:</strong> React/vanilla JS SPA templates with CSS variable theming for instant brand customization.</li>
+<li><strong>API Layer:</strong> Node.js or Python FastAPI — handles customer data, API key management, product generation.</li>
+<li><strong>Database:</strong> Supabase or Firebase for customer records and product configurations — fully managed, low cost.</li>
+<li><strong>Payment Integration:</strong> PayMongo (Philippine payment gateway supporting GCash, Maya, cards, OTC banks).</li>
+<li><strong>Delivery:</strong> Products self-hosted on Vercel/Netlify (free tier sufficient for Tier 1 volume) or as downloadable files.</li>
+</ul>
+<h3>DigiLeaf — Future B2B SaaS Revenue Stream</h3>
+<p>The automation platform itself has long-term potential as a B2B SaaS product — offered to other Filipino digital product sellers, agencies, and freelancers. This 'DigiLeaf' platform (white-label SaaS) represents a future revenue stream that can be spun out as a separate product line in Year 2–3, at subscription pricing of ₱249–₱599/month.</p>
+</section>
+<section id="ch8" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 8</span>
+<h2>Agent Model & Pre-Customized Demo Kits</h2>
+</div>
+<p>The agent model is Tech Vision PH's primary channel for Tier 2 (Growth) and Tier 3 (Premium) sales. Commission-only door-to-door field agents combine Filipino relationship-culture sales dynamics with a pre-customized demo strategy that dramatically increases conversion rates.</p>
+<h3>Why Commission-Only Agents Work in the Philippines</h3>
+<ul>
+<li>Filipino business culture is relationship-driven (personal trust = <em>tiwala</em>). Face-to-face presentations by a known person convert far better than online ads or cold emails.</li>
+<li>Commission-only structure aligns agent incentives perfectly with company growth — no sales, no cost to the company.</li>
+<li>Large talent pool: OFW returnees, recent graduates, and part-time sales professionals actively seek commission-based income.</li>
+<li>Proven model: similar commission structures work at Pru Life UK, Sun Life, BPI, and other Philippine financial services companies.</li>
+</ul>
+<h3>The Pre-Customized Demo Kit Concept</h3>
+<div class="callout callout-info"><strong>Demo Kit Production Model</strong><br>→ Nico prepares demo kits for 10 target businesses per agent per visit zone<br>→ Each kit takes ~30 minutes to prepare using the SaaS automation tools<br>→ 10 kits per zone × 4 zones/month = 40 customized demos/month in Year 1<br>→ Expected conversion: 3–5 out of 10 demos → 30–50% close rate<br>→ If agent closes 3 deals/week at ₱20,000 avg: ₱240,000/month per agent<br>→ Agent earns 15% = ₱36,000/month. Company keeps 85% = ₱204,000/month per agent</div>
+<p>Before an agent visits a commercial street, market, or business district, they receive a Pre-Customized Demo Kit. Each kit contains a working SPA product already customized with the target business's real information — their actual name, products, brand colors matching their signage or Facebook page. The prospect sees <strong>their own business, professionally presented, fully functional</strong>, for the first time.</p>
+<h3>Agent Scaling Roadmap</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Phase</th>
+<th>Timeline</th>
+<th>Agent Count</th>
+<th>Focus Area</th>
+<th>Target Revenue</th>
+</tr></thead><tbody>
+<tr>
+<td>Founder Validation</td>
+<td>Month 1–3</td>
+<td>Nico only</td>
+<td>Close first 10–20 clients personally, build playbook</td>
+<td>₱200,000–₱400,000</td>
+</tr>
+<tr>
+<td>Pilot Agents</td>
+<td>Month 4–6</td>
+<td>2–3 agents</td>
+<td>Test playbook with pilots, refine demo kit process</td>
+<td>₱800,000–₱1,200,000</td>
+</tr>
+<tr>
+<td>Metro Scale</td>
+<td>Month 7–12</td>
+<td>5–8 agents</td>
+<td>Makati, BGC, Quezon City, Pasig coverage</td>
+<td>₱2,000,000–₱3,500,000</td>
+</tr>
+<tr>
+<td>Multi-City</td>
+<td>Year 2</td>
+<td>10–15 agents</td>
+<td>Add Cebu City, Davao City, Clark, Iloilo</td>
+<td>₱5,000,000–₱8,000,000</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch9" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 9</span>
+<h2>Go-to-Market Strategy</h2>
+</div>
+<div class="phase-grid">
+<div class="phase-block ph1"><div class="phase-head"><span class="ph-days">Months 1–3</span><span class="ph-title">Founder-Led Validation</span></div><div class="phase-body"><ul>
+<li>Close first 10–20 clients personally</li>
+<li>Target: Salons, restaurants, sari-sari stores</li>
+<li>Build sales playbook from real conversations</li>
+<li>Goal: 10–20 paying clients, 3 video testimonials</li>
+<li>Revenue target: ₱150,000–₱400,000</li>
+</ul></div></div>
+<div class="phase-block ph2"><div class="phase-head"><span class="ph-days">Months 1–12</span><span class="ph-title">Website Live + Self-Serve</span></div><div class="phase-body"><ul>
+<li>TechVisionPH.com live before first sales conversation</li>
+<li>Sachet tier runs continuously generating passive income</li>
+<li>Target: 50–100 Tier 1 downloads in Months 1–3</li>
+<li>Facebook groups, TikTok demos, organic SEO</li>
+<li>Key terms: 'sari-sari store app Philippines'</li>
+</ul></div></div>
+<div class="phase-block ph3"><div class="phase-head"><span class="ph-days">Months 4–6</span><span class="ph-title">Agent Pilot</span></div><div class="phase-body"><ul>
+<li>Recruit 2–3 commission-only agents</li>
+<li>Each agent: product training + demo kit + sales guide</li>
+<li>Target: Makati/BGC beauty, Quezon City restaurants</li>
+<li>KPI: each agent must close 3 deals in 6 weeks</li>
+</ul></div></div>
+</div>
+<h3>Digital Marketing Channels</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Channel</th>
+<th>Strategy</th>
+<th>Budget/Month</th>
+<th>Expected Impact</th>
+</tr></thead><tbody>
+<tr>
+<td>Facebook/Meta</td>
+<td>Targeted ads to MSME owners 25–50, Metro Manila</td>
+<td>₱5,000</td>
+<td>200–500 website visitors/month</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>Demo videos showing product in action — before/after transformation</td>
+<td>₱0 (organic)</td>
+<td>5,000–50,000 views per video</td>
+</tr>
+<tr>
+<td>Google SEO</td>
+<td>Content marketing targeting Filipino MSME digital pain points</td>
+<td>₱0</td>
+<td>500–2,000 organic visits/month by Month 6</td>
+</tr>
+<tr>
+<td>Facebook Groups</td>
+<td>Active participation in Filipino MSME/negosyante communities</td>
+<td>₱0</td>
+<td>50–200 warm leads/month</td>
+</tr>
+<tr>
+<td>DCCP Events</td>
+<td>Trade events, DTI workshops, local chamber meetings</td>
+<td>₱2,000 (transport)</td>
+<td>5–15 warm leads per event</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch10" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 10</span>
+<h2>Competitive Analysis</h2>
+</div>
+<p>The Philippine MSME market is not a technology vacuum. Business owners already use a collection of digital tools — but they are fragmented, incomplete, and disconnected. Tech Vision PH does not compete with any single tool in this stack. <strong>It replaces the stack entirely</strong> with a single, integrated, offline-capable suite.</p>
+<div class="callout callout-warn"><strong>The Typical MSME Digital Stack (Before Tech Vision PH)</strong><br>Marketing: Facebook Page — free, but no backend, no inventory, no analytics<br>Payments: GCash/Maya QR — handles transactions, not business management<br>Customer Service: Messenger/Viber — no CRM, no history, no follow-up<br>Inventory: Physical notebook or Excel — no alerts, no sync, easily lost<br>Website: None (54% of MSMEs) OR a freelancer site 2 years out of date<br>Finance/BIR: Manual receipts — not audit-ready<br>HR/Payroll: WhatsApp group + cash envelope — no records, no compliance<br><strong>Result: Data lives in 6 different places. Nothing talks to each other.</strong></div>
+<h3>Competitor Deep Dives</h3>
+<div class="comp-grid">
+<div class="comp-card"><div class="comp-head">Facebook Business Suite — Free Marketing Layer</div><div class="comp-body"><div class="comp-cols">
+<div class="comp-col green"><h5>What it covers</h5><ul>
+<li>Facebook Page & Instagram management</li>
+<li>Messenger inbox and basic automated replies</li>
+<li>Basic product catalog and Facebook Shop</li>
+<li>Ad campaign management and boost posts</li>
+<li>Basic page analytics (reach, likes, follows)</li>
+</ul></div>
+<div class="comp-col red"><h5>What it cannot do</h5><ul>
+<li>Inventory tracking or stock alerts</li>
+<li>BIR-compliant receipts or official invoicing</li>
+<li>Payroll calculation or employee records</li>
+<li>Legal or contract document generation</li>
+<li>Offline operation (zero connectivity = zero access)</li>
+<li>Multi-sector business workflows</li>
+</ul></div>
+</div></div></div>
+<div class="comp-card"><div class="comp-head">GCash / Maya — Payment Rails</div><div class="comp-body"><div class="comp-cols">
+<div class="comp-col green"><h5>What they cover</h5><ul>
+<li>QR code payments and digital wallet transfers</li>
+<li>Basic merchant transaction history</li>
+<li>GCash Pay Later and Maya credit products</li>
+<li>Simple invoicing (Maya Business)</li>
+<li>Salary disbursement to GCash accounts</li>
+</ul></div>
+<div class="comp-col red"><h5>What they cannot do</h5><ul>
+<li>Inventory or stock management</li>
+<li>Full employee payroll with SSS/PhilHealth/Pag-IBIG deductions</li>
+<li>Legal templates or contract generation</li>
+<li>CRM and client management</li>
+<li>Industry-specific workflows</li>
+</ul></div>
+</div></div></div>
+<div class="comp-card"><div class="comp-head">Local Freelancers — The Real Incumbent</div><div class="comp-body"><div class="comp-cols">
+<div class="comp-col green"><h5>Tech Vision PH advantage</h5><ul>
+<li>Standardized, tested product — not built from scratch</li>
+<li>All revisions included — no surprise extra charges</li>
+<li>Client owns 100% of the IP — no hostage situations</li>
+<li>Defined pricing — no scope creep</li>
+<li>Agent backup support vs. freelancer who disappears</li>
+</ul></div>
+<div class="comp-col red"><h5>Freelancer risks</h5><ul>
+<li>Initial build: ₱15K–50K often becomes ₱40K–120K over 24 months</li>
+<li>Revisions: ₱3K–8K extra per change request</li>
+<li>Quality varies widely by individual</li>
+<li>High business continuity risk (freelancers disappear)</li>
+<li>IP ownership disputes common</li>
+</ul></div>
+</div></div></div>
+<div class="comp-card"><div class="comp-head">Global SaaS (Shopify, Wix, GoDaddy) — Structurally Misaligned</div><div class="comp-body"><div class="comp-cols">
+<div class="comp-col green"><h5>Why they fail MSMEs</h5><ul>
+<li>Monthly subscriptions ₱600–₱6,000 — more than MSME monthly profit</li>
+<li>USD billing exposure — peso cost is unpredictable</li>
+<li>Mandatory internet connectivity — unusable 54% of the time</li>
+<li>No Philippine-specific features (BIR, peso reporting, local logic)</li>
+<li>Designed for Western SMEs — foreign business logic</li>
+</ul></div>
+<div class="comp-col red"><h5>Tech Vision PH difference</h5><ul>
+<li>One-time purchase — no recurring fees ever</li>
+<li>Peso pricing — no foreign currency risk</li>
+<li>Offline-first — works anywhere in the Philippines</li>
+<li>BIR-compliant receipts and reports built-in</li>
+<li>Filipino-first design — Tagalog labels, peso currency</li>
+</ul></div>
+</div></div></div>
+</div>
+<h3>Head-to-Head Feature Matrix</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Feature</th>
+<th>FB Suite</th>
+<th>GCash/Maya</th>
+<th>Canva</th>
+<th>Freelancer</th>
+<th>Web Agency</th>
+<th>Global SaaS</th>
+<th>Tech Vision PH</th>
+</tr></thead><tbody>
+<tr>
+<td>Offline capability (no internet needed)</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>Partial</td>
+<td>✗</td>
+<td>✗</td>
+<td><strong>✓ Core design</strong></td>
+</tr>
+<tr>
+<td>One-time purchase, no monthly fee</td>
+<td>FREE</td>
+<td>FREE</td>
+<td>FREE / monthly</td>
+<td>✓ (upfront)</td>
+<td>✓ (upfront)</td>
+<td>✗ monthly</td>
+<td><strong>✓ Always</strong></td>
+</tr>
+<tr>
+<td>BIR-compliant receipts & invoicing</td>
+<td>✗</td>
+<td>Partial</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>✗</td>
+<td><strong>✓ Built-in</strong></td>
+</tr>
+<tr>
+<td>Inventory & stock management</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>Partial</td>
+<td><strong>✓ All tiers</strong></td>
+</tr>
+<tr>
+<td>Payroll with SSS/PhilHealth/Pag-IBIG</td>
+<td>✗</td>
+<td>Partial</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td><strong>✓ HR module</strong></td>
+</tr>
+<tr>
+<td>Legal & contract templates</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td><strong>✓ 7 sectors</strong></td>
+</tr>
+<tr>
+<td>CRM & client history tracking</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>Partial</td>
+<td><strong>✓ Included</strong></td>
+</tr>
+<tr>
+<td>Filipino UX & peso-first design</td>
+<td>Partial</td>
+<td>✓</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>✗</td>
+<td><strong>✓ 100%</strong></td>
+</tr>
+<tr>
+<td>GCash/Maya payment integration</td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>Partial</td>
+<td><strong>✓ Built-in</strong></td>
+</tr>
+<tr>
+<td>Industry-specific workflows</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>Partial</td>
+<td>Partial</td>
+<td>Partial</td>
+<td><strong>✓ 7 sectors</strong></td>
+</tr>
+</tbody></table></div>
+<h3>10.3 Local Agency Competitive Pricing — Field-Validated Data</h3>
+<p>Direct market research across Metro Manila web development agencies confirms Tech Vision PH's strategic pricing position. The table below reflects real pricing gathered from competitor websites and direct inquiries.</p>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Provider</th>
+<th>Basic</th>
+<th>Mid-Range</th>
+<th>Enterprise</th>
+<th>Maintenance</th>
+<th>Model</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>iBuild.PH</strong></td>
+<td>₱800/mo*</td>
+<td>₱1,000/mo*</td>
+<td>₱1,800/mo*</td>
+<td>Included</td>
+<td>Mandatory subscription — no ownership</td>
+</tr>
+<tr>
+<td><strong>Cebu Web Concepts</strong></td>
+<td>₱12,500–17,500</td>
+<td>₱19,500–47,000</td>
+<td>₱26,000–95,000</td>
+<td>Not included</td>
+<td>One-time; support quoted separately</td>
+</tr>
+<tr>
+<td><strong>NetizenWorks</strong></td>
+<td>₱14,370</td>
+<td>₱32,420</td>
+<td>₱58,940+</td>
+<td>₱980–3,600/mo</td>
+<td>One-time + optional maintenance</td>
+</tr>
+<tr>
+<td><strong>Praferosa</strong></td>
+<td>₱15,000–35,000</td>
+<td>₱30,000–80,000</td>
+<td>₱100,000–200,000</td>
+<td>₱2,000–25,000/mo</td>
+<td>Custom project; scope-based</td>
+</tr>
+<tr>
+<td><strong>OOM.com.ph</strong></td>
+<td>₱30,000–100,000</td>
+<td>Custom</td>
+<td>₱40,000–150,000+</td>
+<td>Separate quote</td>
+<td>Agency retainer model</td>
+</tr>
+<tr>
+<td><strong>Truelogic</strong></td>
+<td>₱100,000–240,000</td>
+<td>₱250,000–2,000,000</td>
+<td>₱500,000–3,000,000</td>
+<td>₱5,000–50,000/mo</td>
+<td>Enterprise agency; full retainer</td>
+</tr>
+<tr style="background:#e8f8f5;font-weight:600;">
+<td><strong>Tech Vision PH</strong></td>
+<td><strong>₱12,000</strong></td>
+<td><strong>₱28,000</strong></td>
+<td><strong>₱58,000</strong></td>
+<td><strong>₱2,500–7,500/mo</strong></td>
+<td><strong>One-time purchase; client owns 100%</strong></td>
+</tr>
+</tbody></table></div>
+<p style="font-size:13px;color:#666;margin-top:4px;">*iBuild.PH operates on a mandatory subscription model (₱9,600–21,600/year). Clients never own their website and face perpetual payment obligation.</p>
+<div class="callout callout-success"><strong>The "Goldilocks Zone" — Best Value in the Market</strong><br><strong>Not the cheapest:</strong> iBuild.PH's ₱800/month is lower upfront, but locks MSMEs into perpetual subscription payments with no ownership. Most MSMEs prefer to pay once and own forever.<br><br><strong>Not the most expensive:</strong> Premium agencies (Truelogic, OOM.com.ph) charge ₱100K–₱3M for enterprise clients — 40–94% more than Tech Vision PH for comparable functionality.<br><br><strong>The sweet spot:</strong> Competitive with mid-tier agencies (NetizenWorks, Praferosa) but with <strong>48-hour delivery</strong> vs their 4–12 week timelines, full IP ownership, and zero scope creep. Speed-to-value and ownership model are the decisive differentiators for price-sensitive MSMEs.</div>
+<h3>10.4 Why Our Pricing Is Sustainable — Cost Structure Advantage</h3>
+<p>Tech Vision PH's ability to price 50–85% below competitors is not margin compression — it is structural cost elimination through the pre-built product model.</p>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Cost Factor</th>
+<th>Traditional Agencies</th>
+<th>Tech Vision PH</th>
+<th>Savings</th>
+</tr></thead><tbody>
+<tr>
+<td>Development Time</td>
+<td>40–80 hours custom coding per project</td>
+<td>2–4 hours configuration of pre-built SPA</td>
+<td><strong>90–95%</strong></td>
+</tr>
+<tr>
+<td>Labor Cost per Project</td>
+<td>₱30,000–90,000</td>
+<td>₱1,500</td>
+<td><strong>95%</strong></td>
+</tr>
+<tr>
+<td>Client Revision Cycles</td>
+<td>3–5 cycles, 10–20 hours</td>
+<td>1 customisation pass</td>
+<td><strong>80%</strong></td>
+</tr>
+<tr>
+<td>Project Management</td>
+<td>Weekly meetings, status reports</td>
+<td>Automated deployment pipeline</td>
+<td><strong>70%</strong></td>
+</tr>
+<tr>
+<td>Hosting (Year 1)</td>
+<td>₱500–2,000/month</td>
+<td>₱0 (free tier infrastructure)</td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-info"><strong>Gross Margin at ₱12,000 Basic Package</strong><br>Sale Price: ₱12,000 &nbsp;|&nbsp; Agent Commission: ₱2,000 (17%) &nbsp;|&nbsp; Configuration Labour: ₱1,500 &nbsp;|&nbsp; Hosting Year 1: ₱0 &nbsp;|&nbsp; Materials &amp; Admin: ₱500<br><strong>→ Gross Profit: ₱8,000 (67% margin)</strong> — even at our most competitive entry price. Maintenance packages carry 80%+ gross margin.</div>
+<h3>Six Structural Moats</h3>
+<div class="moat-grid">
+<div class="moat"><div class="icon">🏃</div><h4>Feet on the Street</h4><p>Commission-only agents in every barangay. No website. No SEO. No ad spend. We walk in and close. Global SaaS cannot do this.</p></div>
+<div class="moat"><div class="icon">💰</div><h4>Sachet Pricing</h4><p>₱299 entry point — priced below what an MSME spends on Facebook Boost per week. Zero barrier to first purchase. Volume engine.</p></div>
+<div class="moat"><div class="icon">🔗</div><h4>Ecosystem Lock-in</h4><p>Sachet clients become Growth clients. Growth clients upsell to Premium. Every tier feeds the next. Client lifetime value compounds.</p></div>
+<div class="moat"><div class="icon">⚖️</div><h4>Legal-Tech Wedge</h4><p>No competitor addresses legal-tech below ₱500K. One Legal-tech client = 80 Sachet clients in gross profit. High-margin anchor.</p></div>
+<div class="moat"><div class="icon">🤝</div><h4>Trust in the Agent</h4><p>MSMEs buy from people they know. Our agents live in the same communities as their clients. This relationship is ours alone.</p></div>
+<div class="moat"><div class="icon">📊</div><h4>Data Network Effect</h4><p>Every client closes trains our playbook. By client 100, we know exact win rates per tier, per district, per agent profile. Proprietary.</p></div>
+</div>
+</section>
+<section id="ch11" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 11</span>
+<h2>Financial Projections & Scenario Analysis</h2>
+</div>
+<p>This chapter presents Year 1 financial projections built from documented assumptions for sales cycles, agent ramp-up, and product mix. Three scenarios — Validation, Base Case, and Optimistic — are provided so investors can evaluate the opportunity across a realistic range of outcomes.</p>
+<h3>11.1 Revenue Model Assumptions</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Assumption</th>
+<th>Value</th>
+<th>Basis</th>
+</tr></thead><tbody>
+<tr>
+<td>Primary revenue type</td>
+<td>One-time project fees</td>
+<td>MSME market preference; avoids churn risk</td>
+</tr>
+<tr>
+<td>Average Sachet deal</td>
+<td>₱900</td>
+<td>Mix of ₱299–₱1,499 tier; blended average</td>
+</tr>
+<tr>
+<td>Average Growth deal</td>
+<td>₱20,000</td>
+<td>Mix of ₱8,000–₱28,000; modal at ₱18K</td>
+</tr>
+<tr>
+<td>Average Premium deal</td>
+<td>₱38,000</td>
+<td>Mix of ₱12,000–₱58,000; modal at ₱35K</td>
+</tr>
+<tr>
+<td>Average Legal-tech deal</td>
+<td>₱75,000</td>
+<td>Mix of ₱28,000–₱275,000; entry-level majority</td>
+</tr>
+<tr>
+<td>COGS (delivery cost)</td>
+<td>32% of revenue</td>
+<td>Labour: 25% + hosting/tools: 7%</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>68%</td>
+<td>In line with Philippine software SME benchmarks</td>
+</tr>
+<tr>
+<td>Agent commission rate</td>
+<td>20% of agent-attributed revenue</td>
+<td>Commission-only; no base salary in Year 1</td>
+</tr>
+<tr>
+<td>Founder salary</td>
+<td>₱50,000/month</td>
+<td>Self-funded from bootstrap capital</td>
+</tr>
+<tr>
+<td>Tools & infrastructure</td>
+<td>₱15,000/month</td>
+<td>Hosting, CRM, design tools, communication</td>
+</tr>
+<tr>
+<td>Marketing spend</td>
+<td>₱12,000/month</td>
+<td>Facebook ads, printed materials, transport</td>
+</tr>
+<tr>
+<td>Admin & miscellaneous</td>
+<td>₱9,000/month</td>
+<td>Accounting, legal, sundry expenses</td>
+</tr>
+</tbody></table></div>
+<h3>11.2 Sales Cycle Assumptions</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Tier</th>
+<th>Avg Deal Size</th>
+<th>Meetings to Close</th>
+<th>Days to Close</th>
+<th>Est. Win Rate</th>
+<th>Founder Cap./mo</th>
+<th>Agent Cap./mo</th>
+</tr></thead><tbody>
+<tr>
+<td>Sachet (₱299–₱1,499)</td>
+<td>₱900</td>
+<td>1 meeting</td>
+<td>1–3 days</td>
+<td>35%</td>
+<td>60 demos → 21 closes</td>
+<td>50 demos → 18 closes</td>
+</tr>
+<tr>
+<td>Growth (₱8,000–₱28,000)</td>
+<td>₱20,000</td>
+<td>2–3 meetings</td>
+<td>10–14 days</td>
+<td>22%</td>
+<td>20 demos → 4 closes</td>
+<td>16 demos → 4 closes</td>
+</tr>
+<tr>
+<td>Premium (₱12,000–₱58,000)</td>
+<td>₱38,000</td>
+<td>3–5 meetings</td>
+<td>21–30 days</td>
+<td>18%</td>
+<td>10 demos → 2 closes</td>
+<td>8 demos → 1 close</td>
+</tr>
+<tr>
+<td>Legal-tech (₱28,000–₱275,000)</td>
+<td>₱75,000</td>
+<td>4–6 meetings</td>
+<td>30–45 days</td>
+<td>12%</td>
+<td>5 demos → 1 close</td>
+<td>4 demos → 0–1 close</td>
+</tr>
+</tbody></table></div>
+<h3>11.3 Agent Ramp-Up Model</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Period</th>
+<th>Agent Status</th>
+<th>Monthly Agent Revenue</th>
+<th>Cumul. Active Agents</th>
+</tr></thead><tbody>
+<tr>
+<td>Month 1</td>
+<td>Founder only — testing market</td>
+<td>—</td>
+<td>0 agents</td>
+</tr>
+<tr>
+<td>Month 2</td>
+<td>Agent 1 joins — 2-week training + shadowing</td>
+<td>₱0–₱30,000</td>
+<td>1 (ramp)</td>
+</tr>
+<tr>
+<td>Month 3</td>
+<td>Agent 1 solo demos begin</td>
+<td>₱60,000</td>
+<td>1 (active)</td>
+</tr>
+<tr>
+<td>Month 4</td>
+<td>Agent 1 at full rhythm; Agent 2 training</td>
+<td>₱120,000</td>
+<td>2 (1 full, 1 ramp)</td>
+</tr>
+<tr>
+<td>Month 5</td>
+<td>Agent 2 solo demos begin</td>
+<td>₱200,000</td>
+<td>2 (active)</td>
+</tr>
+<tr>
+<td>Month 6</td>
+<td>Both agents full; Agent 3 training</td>
+<td>₱280,000</td>
+<td>3 (2 full, 1 ramp)</td>
+</tr>
+<tr>
+<td>Month 7</td>
+<td>3 agents at full rhythm</td>
+<td>₱360,000</td>
+<td>3 (active)</td>
+</tr>
+<tr>
+<td>Month 8</td>
+<td>Agent 4 training begins</td>
+<td>₱410,000</td>
+<td>4 (3 full, 1 ramp)</td>
+</tr>
+<tr>
+<td>Month 9–12</td>
+<td>4 agents at full rhythm; Legal-tech focus</td>
+<td>₱460,000–₱530,000</td>
+<td>4 (active)</td>
+</tr>
+</tbody></table></div>
+<h3>11.4 Year 1 Monthly Revenue Build — Base Case</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Month</th>
+<th>Founder Rev</th>
+<th>Agent Rev</th>
+<th>Total Rev</th>
+<th>Cumul. Rev</th>
+<th>Gross (68%)</th>
+<th>OpEx</th>
+<th>Net</th>
+<th>Key Milestone</th>
+</tr></thead><tbody>
+<tr>
+<td>Month 1</td>
+<td>₱95K</td>
+<td>₱0</td>
+<td>₱95K</td>
+<td>₱95K</td>
+<td>₱65K</td>
+<td>₱86K</td>
+<td>(₱21K)</td>
+<td>Market testing; first 5 Sachet closes</td>
+</tr>
+<tr>
+<td>Month 2</td>
+<td>₱155K</td>
+<td>₱0</td>
+<td>₱155K</td>
+<td>₱250K</td>
+<td>₱105K</td>
+<td>₱86K</td>
+<td>₱19K</td>
+<td>Agent 1 joins training</td>
+</tr>
+<tr>
+<td>Month 3</td>
+<td>₱130K</td>
+<td>₱90K</td>
+<td>₱220K</td>
+<td>₱470K</td>
+<td>₱150K</td>
+<td>₱104K</td>
+<td>₱46K</td>
+<td>Agent 1 active</td>
+</tr>
+<tr>
+<td>Month 4</td>
+<td>₱130K</td>
+<td>₱165K</td>
+<td>₱295K</td>
+<td>₱765K</td>
+<td>₱201K</td>
+<td>₱119K</td>
+<td>₱82K</td>
+<td>Agent 2 training</td>
+</tr>
+<tr>
+<td>Month 5</td>
+<td>₱130K</td>
+<td>₱250K</td>
+<td>₱380K</td>
+<td>₱1,145K</td>
+<td>₱258K</td>
+<td>₱136K</td>
+<td>₱122K</td>
+<td>Agent 2 active; first Legal close</td>
+</tr>
+<tr>
+<td>Month 6</td>
+<td>₱130K</td>
+<td>₱305K</td>
+<td>₱435K</td>
+<td>₱1,580K</td>
+<td>₱296K</td>
+<td>₱147K</td>
+<td>₱149K</td>
+<td>Agent 3 training</td>
+</tr>
+<tr>
+<td>Month 7</td>
+<td>₱130K</td>
+<td>₱355K</td>
+<td>₱485K</td>
+<td>₱2,065K</td>
+<td>₱330K</td>
+<td>₱157K</td>
+<td>₱173K</td>
+<td>3 agents full rhythm</td>
+</tr>
+<tr>
+<td>Month 8</td>
+<td>₱130K</td>
+<td>₱400K</td>
+<td>₱530K</td>
+<td>₱2,595K</td>
+<td>₱360K</td>
+<td>₱166K</td>
+<td>₱194K</td>
+<td>Agent 4 training</td>
+</tr>
+<tr>
+<td>Month 9</td>
+<td>₱130K</td>
+<td>₱460K</td>
+<td>₱590K</td>
+<td>₱3,185K</td>
+<td>₱401K</td>
+<td>₱178K</td>
+<td>₱223K</td>
+<td>4 agents active</td>
+</tr>
+<tr>
+<td>Month 10</td>
+<td>₱130K</td>
+<td>₱500K</td>
+<td>₱630K</td>
+<td>₱3,815K</td>
+<td>₱428K</td>
+<td>₱186K</td>
+<td>₱242K</td>
+<td>Upsell campaign</td>
+</tr>
+<tr>
+<td>Month 11</td>
+<td>₱130K</td>
+<td>₱530K</td>
+<td>₱660K</td>
+<td>₱4,475K</td>
+<td>₱449K</td>
+<td>₱192K</td>
+<td>₱257K</td>
+<td>Pre-year-end push</td>
+</tr>
+<tr>
+<td>Month 12</td>
+<td>₱130K</td>
+<td>₱600K</td>
+<td>₱730K</td>
+<td>₱5,205K</td>
+<td>₱496K</td>
+<td>₱206K</td>
+<td>₱290K</td>
+<td>Year-end close; referral launch</td>
+</tr>
+<tr>
+<td><strong>YEAR 1 TOTAL</strong></td>
+<td><strong>₱1,440K</strong></td>
+<td><strong>₱3,655K</strong></td>
+<td><strong>₱5,205K</strong></td>
+<td>—</td>
+<td><strong>₱3,540K</strong></td>
+<td><strong>₱1,763K</strong></td>
+<td><strong>₱1,776K</strong></td>
+<td><strong>34.1% net margin</strong></td>
+</tr>
+</tbody></table></div>
+<h3>11.5 Annual 3-Year P&L — Base Case</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Line Item</th>
+<th>Year 1 (Base)</th>
+<th>Year 2 (Base)</th>
+<th>Year 3 (Base)</th>
+</tr></thead><tbody>
+<tr>
+<td>One-time project fees</td>
+<td>₱5,205K</td>
+<td>₱11,200K</td>
+<td>₱18,500K</td>
+</tr>
+<tr>
+<td>Alagang maintenance packages</td>
+<td>—</td>
+<td>₱1,500K</td>
+<td>₱3,200K</td>
+</tr>
+<tr>
+<td><strong>Total Revenue</strong></td>
+<td><strong>₱5,205K</strong></td>
+<td><strong>₱12,700K</strong></td>
+<td><strong>₱21,700K</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Total COGS (32%)</td>
+<td>₱1,666K</td>
+<td>₱4,064K</td>
+<td>₱6,944K</td>
+</tr>
+<tr>
+<td><strong>Gross Profit (68%)</strong></td>
+<td><strong>₱3,540K</strong></td>
+<td><strong>₱8,636K</strong></td>
+<td><strong>₱14,756K</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Founder salary</td>
+<td>₱600K</td>
+<td>₱600K</td>
+<td>₱720K</td>
+</tr>
+<tr>
+<td>Agent commissions (20%)</td>
+<td>₱731K</td>
+<td>₱1,800K</td>
+<td>₱2,880K</td>
+</tr>
+<tr>
+<td>Support staff (from Yr 2)</td>
+<td>—</td>
+<td>₱240K</td>
+<td>₱480K</td>
+</tr>
+<tr>
+<td>Tools & infrastructure</td>
+<td>₱180K</td>
+<td>₱240K</td>
+<td>₱360K</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>₱144K</td>
+<td>₱240K</td>
+<td>₱360K</td>
+</tr>
+<tr>
+<td>Admin & compliance</td>
+<td>₱108K</td>
+<td>₱180K</td>
+<td>₱240K</td>
+</tr>
+<tr>
+<td><strong>Total OpEx</strong></td>
+<td><strong>₱1,763K</strong></td>
+<td><strong>₱3,300K</strong></td>
+<td><strong>₱5,040K</strong></td>
+</tr>
+<tr>
+<td><strong>NET OPERATING PROFIT</strong></td>
+<td><strong>₱1,776K</strong></td>
+<td><strong>₱5,336K</strong></td>
+<td><strong>₱9,716K</strong></td>
+</tr>
+<tr>
+<td>Net margin</td>
+<td>34.1%</td>
+<td>42.0%</td>
+<td>44.8%</td>
+</tr>
+<tr>
+<td>Clients served (cumulative)</td>
+<td>304</td>
+<td>924</td>
+<td>1,884</td>
+</tr>
+<tr>
+<td>Agents (end of year)</td>
+<td>4</td>
+<td>8</td>
+<td>12</td>
+</tr>
+</tbody></table></div>
+<h3>11.6 Three-Scenario Analysis</h3>
+<div class="scenario-grid">
+<div class="scenario-block sc1"><div class="sc-head"><div class="sc-rev">₱1.62M Revenue</div><div class="sc-title">Scenario 1: Validation — Founder Only · 0 Agents</div></div><div class="sc-body">
+<div class="sc-row"><span>Year 1 Revenue</span><span class="scv">₱1,620,000</span></div>
+<div class="sc-row"><span>Gross Profit (68%)</span><span class="scv">₱1,101,600</span></div>
+<div class="sc-row"><span>Total OpEx</span><span class="scv">₱1,032,000</span></div>
+<div class="sc-row"><span>Net Profit</span><span class="scv">₱68,400 (4.2%)</span></div>
+<div class="sc-row"><span>Total Clients</span><span class="scv">90</span></div>
+<div class="sc-row"><span>Investor Return (5yr)</span><span class="scv">3.3×</span></div>
+</div></div>
+<div class="scenario-block sc2"><div class="sc-head"><div class="sc-rev">₱5.2M Revenue</div><div class="sc-title">Scenario 2: Base Case — 4 Agents by Month 8 · Operating Plan</div></div><div class="sc-body">
+<div class="sc-row"><span>Year 1 Revenue</span><span class="scv">₱5,205,000</span></div>
+<div class="sc-row"><span>Gross Profit (68%)</span><span class="scv">₱3,540,000</span></div>
+<div class="sc-row"><span>Total OpEx</span><span class="scv">₱1,763,000</span></div>
+<div class="sc-row"><span>Net Profit</span><span class="scv">₱1,776,000 (34.1%)</span></div>
+<div class="sc-row"><span>Total Clients</span><span class="scv">304</span></div>
+<div class="sc-row"><span>Investor Return (5yr)</span><span class="scv">12.5×</span></div>
+</div></div>
+<div class="scenario-block sc3"><div class="sc-head"><div class="sc-rev">₱8.16M Revenue</div><div class="sc-title">Scenario 3: Optimistic — 6 Agents · Legal-Tech Acceleration</div></div><div class="sc-body">
+<div class="sc-row"><span>Year 1 Revenue</span><span class="scv">₱8,160,000</span></div>
+<div class="sc-row"><span>Gross Profit (68%)</span><span class="scv">₱5,549,000</span></div>
+<div class="sc-row"><span>Total OpEx</span><span class="scv">₱2,890,000</span></div>
+<div class="sc-row"><span>Net Profit</span><span class="scv">₱2,659,000 (32.6%)</span></div>
+<div class="sc-row"><span>Total Clients</span><span class="scv">480</span></div>
+<div class="sc-row"><span>Investor Return (5yr)</span><span class="scv">18.8×</span></div>
+</div></div>
+</div>
+<h3>11.7 Sensitivity Analysis</h3>
+<div class="callout callout-info"><strong>Variable A: Agent First-Deal Timing</strong> — If an agent closes in Week 2 vs Week 8, Year 1 total revenue ranges from ₱8.4M (optimistic) down to ₱2.7M (very slow ramp).<br><br><strong>Variable B: Growth-Tier Win Rate</strong> — A 5-percentage-point swing moves annual revenue by ~₱800K. At 30% win rate: ₱7.1M. At 10%: ₱2.8M.<br><br><strong>Variable C: Sachet Traction in Months 1–3</strong> — Strong Month 1 Sachet performance (35+ closes/month) generates 8–10 referrals/month, adding ₱600K–₱900K to Base Case via accelerated Growth-tier conversion. &lt;5 closes/month triggers the product-market fit review protocol.</div>
+</section>
+<section id="ch12" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 12</span>
+<h2>Unit Economics</h2>
+</div>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Metric</th>
+<th>Tier 1 Sachet</th>
+<th>Tier 2 Growth</th>
+<th>Tier 3 Premium</th>
+<th>Legal Tech</th>
+</tr></thead><tbody>
+<tr>
+<td>Average Sale Price</td>
+<td>₱800</td>
+<td>₱18,000</td>
+<td>₱74,000</td>
+<td>₱150,000</td>
+</tr>
+<tr>
+<td>Agent Commission (15%)</td>
+<td>₱0 (self-serve)</td>
+<td>₱2,700</td>
+<td>₱11,100</td>
+<td>₱22,500</td>
+</tr>
+<tr>
+<td>Customization Labor</td>
+<td>₱40 (automated)</td>
+<td>₱2,000</td>
+<td>₱15,000</td>
+<td>₱25,000</td>
+</tr>
+<tr>
+<td>Payment Processing (2.5%)</td>
+<td>₱20</td>
+<td>₱450</td>
+<td>₱1,850</td>
+<td>₱3,750</td>
+</tr>
+<tr>
+<td><strong>Contribution Margin</strong></td>
+<td><strong>₱740 (92.5%)</strong></td>
+<td><strong>₱12,850 (71.4%)</strong></td>
+<td><strong>₱46,050 (62.2%)</strong></td>
+<td><strong>₱98,750 (65.8%)</strong></td>
+</tr>
+<tr>
+<td>Customer Acquisition Cost (CAC)</td>
+<td>₱80 (ads/organic)</td>
+<td>₱500 (agent prep)</td>
+<td>₱2,000 (demo kit + agent time)</td>
+<td>₱5,000 (premium sales)</td>
+</tr>
+<tr>
+<td><strong>Gross Margin per Sale</strong></td>
+<td><strong>₱660 (82.5%)</strong></td>
+<td><strong>₱12,350 (68.6%)</strong></td>
+<td><strong>₱44,050 (59.5%)</strong></td>
+<td><strong>₱93,750 (62.5%)</strong></td>
+</tr>
+<tr>
+<td>Lifetime Value (LTV)</td>
+<td>₱1,200 (incl. upgrades)</td>
+<td>₱22,000 (incl. upgrades)</td>
+<td>₱85,000 (incl. upgrades)</td>
+<td>₱200,000+</td>
+</tr>
+<tr>
+<td>LTV : CAC Ratio</td>
+<td>15 : 1</td>
+<td>44 : 1</td>
+<td>42.5 : 1</td>
+<td>40 : 1</td>
+</tr>
+<tr>
+<td>Payback Period</td>
+<td>Day 1</td>
+<td>Day 1</td>
+<td>Day 1</td>
+<td>Day 1</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-success"><strong>Note:</strong> All tiers have Day 1 payback since products are one-time purchase with no SaaS recurring cost structure. No subscriber churn risk. LTV comes from optional upgrades and referrals.</div>
+</section>
+<section id="ch13" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 13</span>
+<h2>Bootstrap Model & Funding Structure</h2>
+</div>
+<div class="callout callout-success"><strong>13.1 The Bootstrap Position — Strength, Not Necessity</strong><br>Tech Vision PH is designed to be self-sustaining from Philippine client revenue within the first 90 days. Any investor capital raised is <strong>acceleration capital, not survival capital</strong>. The business model, products, and sales strategy are fully operational from Day 1 — funding accelerates reach, it does not create the business.</div>
+<h3>13.2 The Angel Investment Round — ₱600,000 for 15%</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Parameter</th>
+<th>Detail</th>
+</tr></thead><tbody>
+<tr>
+<td>Investment amount</td>
+<td><strong>₱600,000</strong></td>
+</tr>
+<tr>
+<td>Equity offered</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Pre-money valuation</td>
+<td><strong>₱3,400,000</strong></td>
+</tr>
+<tr>
+<td>Post-money valuation</td>
+<td><strong>₱4,000,000</strong></td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>Pre-revenue, post-product (80+ products built)</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Two milestone-gated tranches (see Section 13.3)</td>
+</tr>
+<tr>
+<td>Investor rights</td>
+<td>Monthly financial reporting, advisory access, right of first refusal on Series A</td>
+</tr>
+<tr>
+<td>Exit path</td>
+<td>Series A at 12 months (₱15M–₱40M target raise) or strategic acquisition</td>
+</tr>
+</tbody></table></div>
+<h3>13.3 Milestone-Gated Funding Structure</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+<div class="callout callout-info"><strong>Tranche 1 — ₱300,000 at Signing</strong><br>→ Legal & compliance (DTI, BIR, GCash Business, PayMongo): ₱25,000<br>→ Agent demo kit development (3 sector packages): ₱40,000<br>→ Sales materials (demo tablet, printed collateral, business cards): ₱35,000<br>→ Month 1 launch marketing (Facebook ads — Makati/BGC MSMEs): ₱50,000<br>→ Working capital — Month 1–2 operations: ₱100,000<br>→ Product development reserve (custom builds, localisation): ₱50,000<br><strong>TOTAL: ₱300,000</strong></div>
+<div class="callout callout-warn"><strong>Tranche 2 — ₱300,000 at 1-Month Milestone</strong><br>Release requires ALL 5 criteria verified:<br>→ 5 paying Philippine clients with GCash/Maya/bank receipt evidence<br>→ Sales script written, tested, and documented<br>→ Revenue collected ≥ ₱50,000 (verified by bank/GCash statement)<br>→ 3+ agent candidates identified and screened<br>→ Website live with self-serve Tier 1 products available<br><strong>No partial release — all five criteria required</strong><br><em>Used for: agent recruitment, expanded marketing, product customisation, and regional outreach (Cebu/Davao)</em></div>
+</div>
+<h3>13.5 Investor Returns Framework</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Scenario</th>
+<th>Year 3 Revenue</th>
+<th>Net Margin</th>
+<th>Est. Valuation (3×)</th>
+<th>15% Stake Value</th>
+<th>Return on ₱600K</th>
+</tr></thead><tbody>
+<tr>
+<td>Conservative</td>
+<td>₱10.2M</td>
+<td>40%</td>
+<td>₱30.6M</td>
+<td>₱4.59M</td>
+<td><strong>7.7×</strong></td>
+</tr>
+<tr>
+<td>Base Case</td>
+<td>₱16.6M</td>
+<td>52%</td>
+<td>₱49.8M</td>
+<td>₱7.47M</td>
+<td><strong>12.5×</strong></td>
+</tr>
+<tr>
+<td>Optimistic</td>
+<td>₱25.0M</td>
+<td>58%</td>
+<td>₱75.0M</td>
+<td>₱11.25M</td>
+<td><strong>18.8×</strong></td>
+</tr>
+<tr>
+<td>Series A exit (Year 2)</td>
+<td>₱12.3M run rate</td>
+<td>43%</td>
+<td>₱30M–₱80M (institutional)</td>
+<td>₱4.5M–₱12M</td>
+<td><strong>7.5×–20×</strong></td>
+</tr>
+</tbody></table></div>
+<h3>13.6 Path to Series A (Year 2)</h3>
+<p>After 12 months of verifiable Philippine revenue, 50+ reference clients across multiple sectors, and a proven agent model with documented sales metrics, Tech Vision PH will be positioned for an institutional fundraise of ₱15M–₱40M. This capital would fund regional expansion to Cebu and Davao, a dedicated legal tech sales specialist, and the DigiLeaf white-label platform build.</p>
+<p>The angel investor's early entry at a ₱3.4M pre-money valuation represents participation at the ground floor of a company that will enter the Series A conversation with audited revenue, a proven sales playbook, and an agent network — a fundamentally different risk profile than the current stage.</p>
+</section>
+<section id="ch14" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 14</span>
+<h2>Technology & Intellectual Property</h2>
+</div>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>IP Asset</th>
+<th>Protection Method</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>80+ SPA/PWA products (source code)</td>
+<td>Copyright under RA 8293 + trade secret</td>
+<td>Active — code is proprietary</td>
+</tr>
+<tr>
+<td>SaaS customization engine</td>
+<td>Trade secret (not published)</td>
+<td>In development</td>
+</tr>
+<tr>
+<td>TechVisionPH brand</td>
+<td>DTI trade name registration</td>
+<td>Pending registration</td>
+</tr>
+<tr>
+<td>Product names (TindahanPro, etc.)</td>
+<td>IPOPHL trademark filing</td>
+<td>To be filed post-launch</td>
+</tr>
+<tr>
+<td>Philippine-specific business logic</td>
+<td>Copyright + trade secret</td>
+<td>Active — embedded in products</td>
+</tr>
+<tr>
+<td>Demo kit process / agent system</td>
+<td>Documented trade secret</td>
+<td>Active</td>
+</tr>
+</tbody></table></div>
+<p>Philippine IP law (RA 8293 — Intellectual Property Code) provides automatic copyright protection to original software and digital products from the moment of creation. Tech Vision PH will additionally file IPOPHL registrations for the TechVisionPH brand and the TindahanPro product name once commercial operations begin.</p>
+</section>
+<section id="ch15" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 15</span>
+<h2>Legal & Regulatory Compliance</h2>
+</div>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Requirement</th>
+<th>Governing Body</th>
+<th>Action Required</th>
+<th>Timeline</th>
+</tr></thead><tbody>
+<tr>
+<td>Business Name Registration</td>
+<td>DTI</td>
+<td>Register 'Tech Vision PH' as sole proprietorship</td>
+<td>Month 1</td>
+</tr>
+<tr>
+<td>BIR Registration & COR</td>
+<td>Bureau of Internal Revenue</td>
+<td>Get Certificate of Registration, TIN, official receipts</td>
+<td>Month 1</td>
+</tr>
+<tr>
+<td>VAT Registration</td>
+<td>BIR</td>
+<td>Required when annual revenue exceeds ₱3,000,000</td>
+<td>Month 8–10</td>
+</tr>
+<tr>
+<td>CREATE Act Compliance</td>
+<td>BIR / FIRB</td>
+<td>20–25% corporate income tax; MSME exemption below ₱100M net income</td>
+<td>Ongoing</td>
+</tr>
+<tr>
+<td>Data Privacy Act (RA 10173)</td>
+<td>NPC</td>
+<td>Privacy Notice, DPA registration when >250 employees</td>
+<td>Month 1 (notice) / Year 2 (registration)</td>
+</tr>
+<tr>
+<td>Agent Commission Withholding Tax</td>
+<td>BIR</td>
+<td>10–15% withholding on commissions — file quarterly</td>
+<td>From Month 4 (first agents)</td>
+</tr>
+<tr>
+<td>OPC or Corporation</td>
+<td>SEC</td>
+<td>Convert from sole prop if investor joins or revenue >₱5M</td>
+<td>Year 2</td>
+</tr>
+<tr>
+<td>FDA/DOH for Health Products</td>
+<td>FDA</td>
+<td>Patient Record & Pharmacy products need regulatory clearance</td>
+<td>Month 6 (before launching health vertical)</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch16" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 16</span>
+<h2>Risk Analysis & Mitigation</h2>
+</div>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr></thead><tbody>
+<tr>
+<td>Product-market fit not validated</td>
+<td><span class='risk-medium'>Medium</span></td>
+<td><span class='risk-high'>High</span></td>
+<td>Founder-led validation phase before agent hiring — fail fast and pivot product mix</td>
+</tr>
+<tr>
+<td>Agents underperform / don't close</td>
+<td><span class='risk-medium'>Medium</span></td>
+<td><span class='risk-high'>High</span></td>
+<td>Demo kit model increases close rate. Pilot with 2–3 agents before full scale. Cut non-performers fast.</td>
+</tr>
+<tr>
+<td>SaaS automation build delayed</td>
+<td><span class='risk-low'>Low</span></td>
+<td><span class='risk-medium'>Medium</span></td>
+<td>Tier 1 can launch with manual customization. Automation accelerates but is not launch-critical.</td>
+</tr>
+<tr>
+<td>Price resistance from MSMEs</td>
+<td><span class='risk-medium'>Medium</span></td>
+<td><span class='risk-medium'>Medium</span></td>
+<td>₱299 entry tier removes price barrier. Tiered pricing structure ensures accessibility at every MSME budget level.</td>
+</tr>
+<tr>
+<td>Technical failure / data loss</td>
+<td><span class='risk-low'>Low</span></td>
+<td><span class='risk-high'>High</span></td>
+<td>Offline-first design is inherently resilient. No server = no server outage. Regular backup reminders in UX.</td>
+</tr>
+<tr>
+<td>Competitor copies model</td>
+<td><span class='risk-low'>Low (now)</span></td>
+<td><span class='risk-medium'>Medium</span></td>
+<td>Speed to market + agent relationships + 80+ product depth = 12–18 month head start minimum.</td>
+</tr>
+<tr>
+<td>Health/pharmacy regulatory block</td>
+<td><span class='risk-medium'>Medium</span></td>
+<td><span class='risk-low'>Low</span></td>
+<td>Health products not in initial launch. FDA clearance pursued concurrently in background.</td>
+</tr>
+<tr>
+<td>Founder single-point-of-failure</td>
+<td><span class='risk-medium'>Medium (early)</span></td>
+<td><span class='risk-high'>High</span></td>
+<td>Document all processes from Month 1. First hire = operations coordinator by Month 6.</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="ch17" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 17</span>
+<h2>Future Growth & Expansion</h2>
+</div>
+<h3>Geographic Expansion</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Phase</th>
+<th>Markets</th>
+<th>Timeline</th>
+<th>Revenue Potential</th>
+</tr></thead><tbody>
+<tr>
+<td>Phase 1</td>
+<td>Metro Manila (Makati, BGC, QC, Pasig, Pasay)</td>
+<td>Year 1</td>
+<td>Base model — ₱5.2M</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>Metro Manila full coverage + Pampanga/Clark</td>
+<td>Year 2 Q1</td>
+<td>+₱3M–₱5M</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>Cebu City — second largest MSME hub</td>
+<td>Year 2 Q3</td>
+<td>+₱2M–₱4M</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Davao City, Iloilo, Cagayan de Oro</td>
+<td>Year 3</td>
+<td>+₱3M–₱6M</td>
+</tr>
+</tbody></table></div>
+<h3>Product Line Expansion</h3>
+<ul>
+<li><strong>DigiLeaf Platform (Year 2):</strong> White-label version of the SaaS automation tool, sold to other Filipino agencies and freelancers. Subscription ₱249–₱599/month. Creates B2B SaaS revenue stream.</li>
+<li><strong>Prestige Protocol Vertical Scale (Year 2):</strong> Dedicated legal tech sales team, target 30+ law firms/year across Metro Manila. Potential partnership with IBP for certified legal tech tools.</li>
+<li><strong>Industry Vertical Packages (Year 2–3):</strong> Bundle products into sector-specific 'kits' — Restaurant Kit, Salon Kit, Legal Kit — for faster agent sales and cleaner marketing.</li>
+<li><strong>Government/NGO Contracts (Year 3):</strong> DTI SETUP program, DOST SBGOC, and BDO/BPI MSME programs as institutional channels for mass Tier 1 distribution.</li>
+</ul>
+</section>
+<section id="ch18" class="chapter">
+<div class="ch-header" style="border-left-color:#028090">
+<span class="ch-num">Chapter 18</span>
+<h2>90-Day Validation Strategy</h2>
+</div>
+<div class="callout callout-info"><strong>The Three Validation Questions — In Order</strong><br>→ Question 1 (Days 1–30): Will Philippine MSMEs pay for this? <em>Proof: 5 paying clients closed by the founder personally.</em><br>→ Question 2 (Days 31–60): Is the sales process repeatable? <em>Proof: 10 more clients using a documented, scriptable process.</em><br>→ Question 3 (Days 61–90): Can someone other than the founder sell this? <em>Proof: At least 1 deal closed by a trained agent.</em><br><strong>All three must be answered YES before raising money to scale.</strong></div>
+<h3>Three-Phase Overview</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Goal</th>
+<th>Client Target</th>
+<th>Revenue Target</th>
+<th>Budget</th>
+</tr></thead><tbody>
+<tr>
+<td>Phase 1: Prove People Pay</td>
+<td>1–30</td>
+<td>5 founder-closed clients</td>
+<td>5 total</td>
+<td>₱50K–₱100K</td>
+<td>₱0</td>
+</tr>
+<tr>
+<td>Phase 2: Prove Repeatability</td>
+<td>31–60</td>
+<td>10 more using a script</td>
+<td>15 total</td>
+<td>₱150K–₱300K</td>
+<td>₱10K</td>
+</tr>
+<tr>
+<td>Phase 3: Prove Scalability</td>
+<td>61–90</td>
+<td>First agent-closed deal</td>
+<td>25+ total</td>
+<td>₱300K–₱600K</td>
+<td>₱20K</td>
+</tr>
+<tr>
+<td>Day 90 Investor Checkpoint</td>
+<td>Day 90</td>
+<td>Present results to investors</td>
+<td>25+ paying clients</td>
+<td>₱500K+ verifiable</td>
+<td>n/a</td>
+</tr>
+</tbody></table></div>
+<h3>Phase 1: Prove People Will Pay (Days 1–30)</h3>
+<div class="phase-grid">
+<div class="phase-block ph1"><div class="phase-head"><span class="ph-days">Days 1–3</span><span class="ph-title">Territory Mapping</span></div><div class="phase-body"><ul><li>Map 50 target businesses in 3 barangays (Legazpi, Salcedo, San Antonio, Makati)</li><li>List ready with owner names and sector</li></ul></div></div>
+<div class="phase-block ph1"><div class="phase-head"><span class="ph-days">Days 4–14</span><span class="ph-title">First Pass + Live Demos</span></div><div class="phase-body"><ul><li>Door-to-door visits: introduce, leave flyer, get WhatsApp contact — 20 contacts</li><li>Follow-up visits + live demo on tablet/laptop for interested owners — 8–10 demos</li></ul></div></div>
+<div class="phase-block ph1"><div class="phase-head"><span class="ph-days">Days 15–30</span><span class="ph-title">First Closes</span></div><div class="phase-body"><ul><li>Close first 3 clients: collect payment (GCash/Maya), deliver product same day</li><li>Two more closes, document the full sales conversation (objections + closes)</li><li>Target: 5 paying clients by Day 30</li></ul></div></div>
+</div>
+<div class="callout callout-info"><strong>Phase 1 Hero Products:</strong><br>1. TindahanPro Inventory & Sales Tracker (₱1,499 sachet / ₱25,000 premium) — solves: Manual inventory counting, unknown daily profit, stock-outs without warning.<br>2. MSME Bookkeeping Dashboard (₱1,499 sachet / ₱28,000 premium) — solves: Disorganized receipts, no BIR-ready financial records, fear of penalties.</div>
+<h3>Phase 2: Prove Repeatability (Days 31–60)</h3>
+<ul>
+<li>Agent 1 joins — training on product, sales script, and demo kit preparation</li>
+<li>Founder continues closing Growth-tier deals using documented script</li>
+<li>Script documented as 1-page Filipino-language format</li>
+<li>10 more clients closed using the documented process</li>
+<li>First Legal-tech prospect identified and demo kit prepared</li>
+<li>Tranche 2 release criteria reviewed at Day 30</li>
+</ul>
+<h3>Phase 3: Prove Scalability (Days 61–90)</h3>
+<ul>
+<li>Agent 1 solo demos begin — first independent close targeted</li>
+<li>3 agents active at full rhythm by Day 80</li>
+<li>First Legal-tech close targeted</li>
+<li>Monthly revenue ≥ ₱350,000</li>
+<li>Day 90 Investor Checkpoint Report prepared</li>
+<li>Revised financial projections delivered to investor as Tranche 2 condition</li>
+</ul>
+<div class="callout callout-warn"><strong>Day 90 Investor Checkpoint</strong><br>Revised financial projections based on real field data delivered as a condition of Tranche 2 (₱300K) release. This replaces all pre-validation assumptions with verified win rates, deal sizes, and agent ramp data. The investor receives actual numbers — not updated forecasts.</div>
+<h3>Pre-Launch Legal Checklist (Before First Client)</h3>
+<div class="tbl-wrap"><table class=""><thead><tr>
+<th>Item</th>
+<th>Action</th>
+<th>Est. Cost</th>
+<th>Blocking?</th>
+</tr></thead><tbody>
+<tr>
+<td>DTI Business Name Registration</td>
+<td>Register 'Tech Vision PH'</td>
+<td>₱500</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BIR TIN Registration</td>
+<td>Sole proprietorship TIN at RDO</td>
+<td>₱0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BIR COR & Official Receipts</td>
+<td>Certificate of Registration + Authority to Print</td>
+<td>₱3,000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>GCash for Business</td>
+<td>Register merchant account for payment collection</td>
+<td>₱0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>PayMongo Account</td>
+<td>Payment gateway for website checkout</td>
+<td>₱0</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>Basic privacy notice</td>
+<td>Data Privacy Act requirement for collecting customer data</td>
+<td>₱0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Service Agreement Template</td>
+<td>1-page contract per client engagement</td>
+<td>₱2,000 (lawyer)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Sole Prop Business Account</td>
+<td>Separate bank account for business income</td>
+<td>₱0</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>Professional liability clarity</td>
+<td>Confirm scope of service delivery in template</td>
+<td>₱0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Agent commission agreement</td>
+<td>Standard contract for commission-only agents</td>
+<td>₱1,000 (template)</td>
+<td>Yes (Month 2)</td>
+</tr>
+</tbody></table></div>
+</section>
+
+<div class="chapter" style="background:var(--dteal);color:#fff;border-bottom:none;">
+  <div style="text-align:center;padding:20px 0;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;">Closing Statement</div>
+    <div style="font-size:22px;font-weight:800;color:#fff;max-width:700px;margin:0 auto;line-height:1.4;">
+      "This is not a startup bet.<br>This is infrastructure for 27 million businesses<br><span style="color:#02C39A;">that already exist.</span>"
+    </div>
+    <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.6);">
+      Nico Schot · Founder & CEO · Tech Vision PH<br>
+      nicoschotjenl1309@gmail.com · Makati City, Philippines
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.35);">
+      Confidential — Prepared February 2026 — For Prestige Protocol Only
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// Scroll spy for nav highlighting
+const sections = document.querySelectorAll("section[id], div[id='hero'], div[id='exec']");
+const navLinks = document.querySelectorAll("#nav ul li a");
+
+function updateNav() {
+  let current = "";
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "#" + current) a.classList.add("active");
+  });
+}
+window.addEventListener("scroll", updateNav);
+updateNav();
+</script>
+</body>
+</html>
+</div>
+
+<script>
+(function(){
+  const C=document.getElementById('bgc'),ctx=C.getContext('2d');
+  let W,H,pts=[];const N=50,D=120;
+  function resize(){W=C.width=window.innerWidth;H=C.height=window.innerHeight;}
+  function Pt(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.38;this.vy=(Math.random()-.5)*.38;this.r=Math.random()*1.3+.7;this.a=Math.random()*.4+.15;}
+  Pt.prototype.tick=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;};
+  function init(){resize();pts=Array.from({length:N},()=>new Pt());loop();}
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);if(d<D){ctx.strokeStyle=`rgba(0,198,255,${(1-d/D)*.16})`;ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
+    pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(0,198,255,${p.a})`;ctx.fill();p.tick();});
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize',()=>{resize();pts=Array.from({length:N},()=>new Pt());});
+  init();
+})();
+
+const sc=['#00C6FF','#7c3aed','#F5A623','#a78bfa','#4ade80'];
+document.addEventListener('click',e=>{
+  for(let i=0;i<7;i++){
+    const s=document.createElement('div');s.className='sparkle';
+    s.style.cssText=`left:${e.clientX+(Math.random()-.5)*32}px;top:${e.clientY}px;background:${sc[Math.floor(Math.random()*sc.length)]};animation-duration:${.7+Math.random()*.9}s;animation-delay:${Math.random()*.15}s;width:${Math.random()*3+2}px;height:${Math.random()*3+2}px;`;
+    document.body.appendChild(s);setTimeout(()=>s.remove(),1600);
+  }
+});
+</script>
+</body>
+</html>
